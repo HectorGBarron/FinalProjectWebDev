@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using CooperativeFuneralFundInc.Models.SupplyRequest;
+using CooperativeFuneralFundInc.Models.Users;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
-    public class CFFDataContext:DbContext
+    public class CFFDataContext: IdentityDbContext<User>
     {
 
         public CFFDataContext(DbContextOptions<CFFDataContext> options) : base(options) { }

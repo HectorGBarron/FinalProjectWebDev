@@ -7,8 +7,8 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
         public int SupplyRequestId { get; set; }
 
-        public int SupplyRequestStatusID { get; set; }
-        public SupplyRequestStatus Status { get; set; }
+        public int StatusID { get; set; }
+        public Status StatusName { get; set; }
 
         public string StatusComments { get; set; }
 

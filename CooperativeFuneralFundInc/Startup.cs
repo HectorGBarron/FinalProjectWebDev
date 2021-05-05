@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CooperativeFuneralFundInc
 {

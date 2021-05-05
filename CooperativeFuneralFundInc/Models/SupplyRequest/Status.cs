@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
-    public class SupplyRequestStatus
+    public class Status
     {
-        public int SupplyRequestStatusID { get; set; }
-        public string SupplyRequestStatusName { get; set; }
+        public int StatusID { get; set; }
+        public string StatusName { get; set; }
 
         
     }
