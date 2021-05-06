@@ -7,6 +7,7 @@ using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
+
 namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
     public class CFFDataContext: IdentityDbContext<User>
@@ -28,7 +29,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                new SupplyRequest
                {
                    SupplyRequestId=1,
-                   SupplyRequestStatusID = 1,
+                   StatusID = 1,
                    StatusComments = "test",
                    OrderItemsID = 1,
                    SuppyRequestOriginId = 1,
@@ -42,32 +43,32 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                );
 
 
-        modelBuilder.Entity<SupplyRequestStatus>().HasData(
+        modelBuilder.Entity<Status>().HasData(
 
-               new SupplyRequestStatus
+               new Status
                {
-                   SupplyRequestStatusID = 1,
-                   SupplyRequestStatusName = "New"
+                   StatusID = 1,
+                   StatusName = "New"
                },
-               new SupplyRequestStatus
+               new Status
                {
-                   SupplyRequestStatusID = 2,
-                   SupplyRequestStatusName = "In-Process"
+                   StatusID = 2,
+                   StatusName = "In-Process"
                },
-               new SupplyRequestStatus
+               new Status
                {
-                   SupplyRequestStatusID = 3,
-                   SupplyRequestStatusName = "Completed"
+                   StatusID = 3,
+                   StatusName = "Completed"
                },
-               new SupplyRequestStatus
+               new Status
                {
-                   SupplyRequestStatusID = 4,
-                   SupplyRequestStatusName = "On hold"
+                   StatusID = 4,
+                   StatusName = "On hold"
                },
-               new SupplyRequestStatus
+               new Status
                {
-                   SupplyRequestStatusID = 5,
-                   SupplyRequestStatusName = "Cancelled"
+                   StatusID = 5,
+                   StatusName = "Cancelled"
                }
          );
 
