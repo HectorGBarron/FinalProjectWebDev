@@ -14,7 +14,7 @@ namespace CooperativeFuneralFundInc.Models.TaskManagement
         public int StatusID { get; set; }
         public Status StatusName { get; set; }
 
-        public int OwnerNameID { get; set; }
+        public int OwnerID { get; set; }
         public Owner OwnerName { get; set; }
         public string RelatedTo { get; set; }
         public string RelatedToName { get; set; }

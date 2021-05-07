@@ -364,7 +364,6 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
@@ -455,3 +454,8 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.pdb
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.genruntimeconfig.cache
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache

@@ -33,7 +33,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public int ClientSupplierID { get; set; }
         public ClientSupplier Client { get; set; }
 
-        public int OwnerNameID { get; set; }
+        public int OwnerID { get; set; }
         public Owner Owner { get; set; }
         public string CreatedBy { get; set; }
         public string CreateTime { get; set; }

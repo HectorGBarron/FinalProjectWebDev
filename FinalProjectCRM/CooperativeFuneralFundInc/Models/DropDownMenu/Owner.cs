@@ -7,7 +7,7 @@ namespace CooperativeFuneralFundInc.Models.DropDownMenu
 {
     public class Owner
     {
-        public int OwnerNameID { get; set; }
+        public int OwnerID { get; set; }
         public string OwnerName{ get; set; }
 
     }

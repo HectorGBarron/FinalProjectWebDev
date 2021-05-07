@@ -39,7 +39,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                    RequestOriginId = 1,
                    RequestTypeID = 1,
                    ClientSupplierID = 1,
-                   OwnerNameID = 1,
+                   OwnerID = 1,
                    CreatedBy = "Test",
                    CreateTime = "Test",
                    UpdatedBy = "Test"
@@ -184,7 +184,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
             modelBuilder.Entity<Owner>().HasData(
                 
-                new Owner { OwnerNameID=1,OwnerName="Person 1"}
+                new Owner { OwnerID=1,OwnerName="Person 1"}
                 
                 
                 );
