@@ -27,7 +27,9 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DbSet<RequestOrigin> RequestOrigins { get; set; }
 
         public DbSet<TaskManagement> TaskManagements { get; set; }
-        
+
+        public DbSet<PhoneNumberType> NumberTypes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -212,8 +214,21 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             modelBuilder.Entity<NotesSection>().HasData(
                 new NotesSection {NotesSectionId=1, RequestOriginId = 1, Note = "Test note", CreatedBy = "Developer" }
                 );
-            
+
+
+            modelBuilder.Entity<PhoneNumberType>().HasData(
+                new PhoneNumberType { Id = "home", Name = "Home" },
+                new PhoneNumberType { Id = "mobile", Name = "Mobile" },
+                new PhoneNumberType { Id = "work", Name = "work" },
+                new PhoneNumberType { Id = "other", Name = "Other" }
+
+  );
+
         }
+
+
+
+
 
         public static async Task CreateAdminUser(IServiceProvider serviceProvider)
         {

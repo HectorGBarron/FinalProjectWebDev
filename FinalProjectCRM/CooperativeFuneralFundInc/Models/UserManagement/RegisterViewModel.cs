@@ -22,5 +22,27 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
+
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
+
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
+
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string phoneNumber { get; set; }
+
+
+        [Required]
+        [Display(Name = "Number Type")]
+        public string numberType { get; set; }
+
+
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210508172113_TaskManagementAdded")]
-    partial class TaskManagementAdded
+    [Migration("20210508222841_AddIdentityTables")]
+    partial class AddIdentityTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -421,7 +421,7 @@ namespace CooperativeFuneralFundInc.Migrations
 
                     b.HasIndex("StatusID");
 
-                    b.ToTable("TaskManagement");
+                    b.ToTable("TaskManagements");
 
                     b.HasData(
                         new
@@ -491,6 +491,18 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<string>("firstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numberType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

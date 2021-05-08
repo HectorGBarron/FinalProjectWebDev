@@ -39,7 +39,10 @@ namespace CooperativeFuneralFundInc.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    firstName = table.Column<string>(nullable: false),
+                    lastName = table.Column<string>(nullable: false),
+                    numberType = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -312,6 +315,46 @@ namespace CooperativeFuneralFundInc.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TaskManagements",
+                columns: table => new
+                {
+                    TaskManagementId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StatusID = table.Column<int>(nullable: false),
+                    OwnerID = table.Column<int>(nullable: false),
+                    RelatedTo = table.Column<string>(nullable: true),
+                    RelatedToName = table.Column<string>(nullable: true),
+                    RequestTypeID = table.Column<int>(nullable: false),
+                    Priority = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<string>(nullable: true),
+                    CreatedTime = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskManagements", x => x.TaskManagementId);
+                    table.ForeignKey(
+                        name: "FK_TaskManagements_OwnerNames_OwnerID",
+                        column: x => x.OwnerID,
+                        principalTable: "OwnerNames",
+                        principalColumn: "OwnerID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TaskManagements_SupplyRequestTypes_RequestTypeID",
+                        column: x => x.RequestTypeID,
+                        principalTable: "SupplyRequestTypes",
+                        principalColumn: "RequestTypeID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TaskManagements_Status_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Status",
+                        principalColumn: "StatusID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "ClientSuppliers",
                 columns: new[] { "ClientSupplierID", "ClientSupplierName" },
@@ -389,6 +432,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "SupplyRequestId", "ClientSupplierID", "CreateTime", "CreatedBy", "OrderItemsID", "OwnerID", "RequestOriginId", "RequestTypeID", "StatusComments", "StatusID", "UpdatedBy", "UpdatedTime" },
                 values: new object[] { 1, 1, "Test", "Test", 1, 1, 1, 1, "test", 1, "Test", null });
 
+            migrationBuilder.InsertData(
+                table: "TaskManagements",
+                columns: new[] { "TaskManagementId", "CreateBy", "CreatedTime", "OwnerID", "Priority", "RelatedTo", "RelatedToName", "RequestTypeID", "StatusID", "UpdatedBy", "UpdatedTime" },
+                values: new object[] { 1, "Test", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, "Test", "Test", 1, 1, "Test", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -462,6 +510,21 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "IX_SupplyRequests_StatusID",
                 table: "SupplyRequests",
                 column: "StatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskManagements_OwnerID",
+                table: "TaskManagements",
+                column: "OwnerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskManagements_RequestTypeID",
+                table: "TaskManagements",
+                column: "RequestTypeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskManagements_StatusID",
+                table: "TaskManagements",
+                column: "StatusID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -488,6 +551,9 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "SupplyRequests");
 
             migrationBuilder.DropTable(
+                name: "TaskManagements");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -500,10 +566,10 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "OwnerNames");
+                name: "RequestOrigins");
 
             migrationBuilder.DropTable(
-                name: "RequestOrigins");
+                name: "OwnerNames");
 
             migrationBuilder.DropTable(
                 name: "SupplyRequestTypes");

@@ -4,14 +4,16 @@ using CooperativeFuneralFundInc.Models.SupplyRequest;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    partial class CFFDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210508222856_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -435,41 +437,6 @@ namespace CooperativeFuneralFundInc.Migrations
                             StatusID = 1,
                             UpdatedBy = "Test",
                             UpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.UserManagement.PhoneNumberType", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NumberTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "home",
-                            Name = "Home"
-                        },
-                        new
-                        {
-                            Id = "mobile",
-                            Name = "Mobile"
-                        },
-                        new
-                        {
-                            Id = "work",
-                            Name = "work"
-                        },
-                        new
-                        {
-                            Id = "other",
-                            Name = "Other"
                         });
                 });
 

@@ -19,15 +19,21 @@ namespace CooperativeFuneralFundInc.Controllers
         private SignInManager<User> signInManager;
 
         public AccountController(UserManager<User> userMngr,
-            SignInManager<User> signInMngr)
+            SignInManager<User> signInMngr, CFFDataContext context )
         {
             userManager = userMngr;
             signInManager = signInMngr;
+            _context = context;
+
+
         }
+
+        private readonly CFFDataContext _context;
 
         [HttpGet]
         public IActionResult Register()
         {
+            ViewBag.NumberType = _context.NumberTypes.ToList();
             return View();
         }
 
