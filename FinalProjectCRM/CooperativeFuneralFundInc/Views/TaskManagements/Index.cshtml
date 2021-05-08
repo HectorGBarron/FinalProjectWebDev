@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedToName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestTypeDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusName.StatusID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName.OwnerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedToName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestTypeDescription.RequestTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TaskManagementId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TaskManagementId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TaskManagementId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
