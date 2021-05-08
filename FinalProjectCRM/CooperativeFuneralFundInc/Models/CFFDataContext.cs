@@ -9,8 +9,8 @@ using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
-using CooperativeFuneralFundInc.Models.DropDownMenu;
-using CooperativeFuneralFundInc.Models.UserManagement;
+
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CooperativeFuneralFundInc.Models.SupplyRequest

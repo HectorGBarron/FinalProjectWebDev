@@ -9,7 +9,7 @@ using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
-using CooperativeFuneralFundInc.Models.UserManagement;
+
 
 namespace CooperativeFuneralFundInc.Controllers
 {
