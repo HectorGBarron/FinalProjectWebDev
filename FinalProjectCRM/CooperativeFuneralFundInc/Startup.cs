@@ -29,6 +29,8 @@ namespace CooperativeFuneralFundInc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddDbContext<CFFDataContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("CoperativeFuneralFundIncDB"))
@@ -69,7 +71,7 @@ namespace CooperativeFuneralFundInc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=LoginIndex}/{id?}");
             });
         }
     }

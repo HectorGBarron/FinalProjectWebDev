@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class OwnersController : Controller
     {

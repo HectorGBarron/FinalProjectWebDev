@@ -458,7 +458,6 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\libman.json
-C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Home\2123Index.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
@@ -479,3 +478,9 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Details.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Edit.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Index.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Create.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Delete.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Details.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Edit.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Index.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs

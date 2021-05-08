@@ -101,5 +101,17 @@ namespace CooperativeFuneralFundInc.Controllers
         {
             return View();
         }
+
+        public ViewResult Index()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult LoginIndex()
+        {
+            return View("Login");
+        }
     }
 }

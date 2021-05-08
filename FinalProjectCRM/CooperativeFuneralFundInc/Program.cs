@@ -21,7 +21,7 @@ namespace CooperativeFuneralFundInc
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseDefaultServiceProvider(           
+                    .UseDefaultServiceProvider(           // 
                         options => options.ValidateScopes = false);
                 });
     }

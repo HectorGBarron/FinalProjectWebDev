@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    // use current controller or area to determine if tab is active
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
