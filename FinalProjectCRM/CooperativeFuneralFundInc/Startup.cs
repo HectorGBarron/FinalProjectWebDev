@@ -69,6 +69,13 @@ namespace CooperativeFuneralFundInc
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
+
+                // route for Admin area
+                endpoints.MapAreaControllerRoute(
+                    name: "admin",
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -3,7 +3,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome to the Admin Section</h1>
 
 </div>
 
@@ -15,7 +15,7 @@
 @inject SignInManager<User> signInManager
 @if (signInManager.IsSignedIn(User))
 {
-    // signed-in user - Log Out button and username
+    // signed-in user - shows the menu
     <li class="nav-item">
 
         <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="TaskManagements" asp-action="Create">Create Task</a>
