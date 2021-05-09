@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 
-namespace CooperativeFuneralFundInc.Models.TaskManagement
+namespace CooperativeFuneralFundInc.Models.TasksManagement
 {
     public class TaskManagement
     {
 
-        public int TaskId { get; set; }
+        public int TaskManagementId { get; set; }
         public int StatusID { get; set; }
         public Status StatusName { get; set; }
 

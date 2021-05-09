@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210507160015_AddIdentityTables")]
+    [Migration("20210508222841_AddIdentityTables")]
     partial class AddIdentityTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -376,7 +376,71 @@ namespace CooperativeFuneralFundInc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.User", b =>
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", b =>
+                {
+                    b.Property<int>("TaskManagementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OwnerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RelatedTo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RelatedToName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestTypeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TaskManagementId");
+
+                    b.HasIndex("OwnerID");
+
+                    b.HasIndex("RequestTypeID");
+
+                    b.HasIndex("StatusID");
+
+                    b.ToTable("TaskManagements");
+
+                    b.HasData(
+                        new
+                        {
+                            TaskManagementId = 1,
+                            CreateBy = "Test",
+                            CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OwnerID = 1,
+                            Priority = 1,
+                            RelatedTo = "Test",
+                            RelatedToName = "Test",
+                            RequestTypeID = 1,
+                            StatusID = 1,
+                            UpdatedBy = "Test",
+                            UpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.UserManagement.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -427,6 +491,18 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<string>("firstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numberType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -620,6 +696,27 @@ namespace CooperativeFuneralFundInc.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", b =>
+                {
+                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Owner", "OwnerName")
+                        .WithMany()
+                        .HasForeignKey("OwnerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.RequestType", "RequestTypeDescription")
+                        .WithMany()
+                        .HasForeignKey("RequestTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Status", "StatusName")
+                        .WithMany()
+                        .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -631,7 +728,7 @@ namespace CooperativeFuneralFundInc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CooperativeFuneralFundInc.Models.User", null)
+                    b.HasOne("CooperativeFuneralFundInc.Models.UserManagement.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -640,7 +737,7 @@ namespace CooperativeFuneralFundInc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CooperativeFuneralFundInc.Models.User", null)
+                    b.HasOne("CooperativeFuneralFundInc.Models.UserManagement.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -655,7 +752,7 @@ namespace CooperativeFuneralFundInc.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CooperativeFuneralFundInc.Models.User", null)
+                    b.HasOne("CooperativeFuneralFundInc.Models.UserManagement.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -664,7 +761,7 @@ namespace CooperativeFuneralFundInc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("CooperativeFuneralFundInc.Models.User", null)
+                    b.HasOne("CooperativeFuneralFundInc.Models.UserManagement.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

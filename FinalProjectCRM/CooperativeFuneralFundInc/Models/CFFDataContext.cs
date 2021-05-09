@@ -7,7 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
-using CooperativeFuneralFundInc.Models.TaskManagement;
+using CooperativeFuneralFundInc.Models.TasksManagement;
+using CooperativeFuneralFundInc.Models.UserManagement;
+
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CooperativeFuneralFundInc.Models.SupplyRequest
@@ -23,10 +26,29 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DbSet<RequestType> SupplyRequestTypes { get; set; }
         public DbSet<RequestOrigin> RequestOrigins { get; set; }
 
+        public DbSet<TaskManagement> TaskManagements { get; set; }
+
+        public DbSet<PhoneNumberType> NumberTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
+            modelBuilder.Entity<TaskManagement>().HasData(
+                new TaskManagement
+                {
+                    TaskManagementId=1,
+                    StatusID=1,
+                    OwnerID=1,
+                    RelatedTo="Test",
+                    RelatedToName="Test",
+                    RequestTypeID=1,
+                    Priority=1,
+                    CreateBy="Test",
+                    UpdatedBy="Test"
+                }
+                );
 
             modelBuilder.Entity<SupplyRequest>().HasData
          (
@@ -192,7 +214,50 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             modelBuilder.Entity<NotesSection>().HasData(
                 new NotesSection {NotesSectionId=1, RequestOriginId = 1, Note = "Test note", CreatedBy = "Developer" }
                 );
-            
+
+
+            modelBuilder.Entity<PhoneNumberType>().HasData(
+                new PhoneNumberType { Id = "home", Name = "Home" },
+                new PhoneNumberType { Id = "mobile", Name = "Mobile" },
+                new PhoneNumberType { Id = "work", Name = "work" },
+                new PhoneNumberType { Id = "other", Name = "Other" }
+
+  );
+
         }
+
+
+
+
+
+        public static async Task CreateAdminUser(IServiceProvider serviceProvider)
+        {
+            UserManager<User> userManager =
+                serviceProvider.GetRequiredService<UserManager<User>>();
+            RoleManager<IdentityRole> roleManager =
+                serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            string username = "Hector";
+            string password = "Hector";
+            string roleName = "Admin";
+
+            // if role doesn't exist, create it
+            if (await roleManager.FindByNameAsync(roleName) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+
+            // if username doesn't exist, create it and add to role
+            if (await userManager.FindByNameAsync(username) == null)
+            {
+                User user = new User { UserName = username };
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, roleName);
+                }
+            }
+        }
+
     }
 }
