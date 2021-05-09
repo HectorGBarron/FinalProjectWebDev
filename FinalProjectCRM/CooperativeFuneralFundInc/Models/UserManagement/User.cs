@@ -24,7 +24,9 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
 
-         
+        
+
+        
 
         [Required]
         [Display(Name = "Number Type")]

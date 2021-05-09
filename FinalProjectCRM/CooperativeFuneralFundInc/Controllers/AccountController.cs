@@ -44,11 +44,6 @@ namespace CooperativeFuneralFundInc.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Username };
-                user.firstName = model.firstName;
-                user.lastName = model.lastName;
-                user.PhoneNumber = model.phoneNumber;
-                user.numberType = model.numberType;
-
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
