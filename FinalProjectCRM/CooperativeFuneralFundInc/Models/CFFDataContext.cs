@@ -237,9 +237,12 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             RoleManager<IdentityRole> roleManager =
                 serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            string username = "Hector";
-            string password = "Hector";
+            string username = "Admin";
+            string password = "Sesame";
             string roleName = "Admin";
+            string fName = "Admin";
+            string lName = "Admin";
+            string numberType = "Other";
 
             // if role doesn't exist, create it
             if (await roleManager.FindByNameAsync(roleName) == null)
@@ -250,7 +253,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             // if username doesn't exist, create it and add to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new User { UserName = username };
+                User user = new User { UserName = username, firstName=fName,lastName=lName,numberType=numberType };
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
