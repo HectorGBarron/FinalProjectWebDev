@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {}
+    "C:\\Users\\Hector\\Google Drive\\Software Engineering\\Web Development II\\Final Project\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {
+    "C:\\Users\\Hector\\Google Drive\\Software Engineering\\Web Development II\\Final Project\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
+        "projectUniqueName": "C:\\Users\\Hector\\Google Drive\\Software Engineering\\Web Development II\\Final Project\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
         "projectName": "CooperativeFuneralFundInc",
-        "projectPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
-        "packagesPath": "C:\\Users\\Banso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\obj\\",
+        "projectPath": "C:\\Users\\Hector\\Google Drive\\Software Engineering\\Web Development II\\Final Project\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
+        "packagesPath": "C:\\Users\\Hector\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hector\\Google Drive\\Software Engineering\\Web Development II\\Final Project\\FinalProjectCRM\\CooperativeFuneralFundInc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Banso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hector\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -82,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
