@@ -34,6 +34,7 @@ namespace CooperativeFuneralFundInc.Controllers
         public IActionResult Register()
         {
             ViewBag.NumberType = _context.NumberTypes.ToList();
+            
             return View();
         }
 

@@ -1,30 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using CooperativeFuneralFundInc.Areas.Admin.Controllers
+@model HomeController
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Admin Section</h1>
-
+    <h1 class="display-4">Welcome @User.Identity.Name</h1>
 </div>
 
 
-@using CooperativeFuneralFundInc.Models.UserManagement
+@Html.ActionLink("User Management", "Index", "User", null, new { @class = "btn btn-secondary" })
 
-@using Microsoft.AspNetCore.Identity
+@Html.ActionLink("Supply Request Management", "SupplyR", "User", null, new { @class = "btn btn-secondary" })
 
-@inject SignInManager<User> signInManager
-@if (signInManager.IsSignedIn(User))
-{
-    // signed-in user - shows the menu
-    <li class="nav-item">
 
-        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="TaskManagements" asp-action="Create">Create Task</a>
-    </li>
-}
-else { 
-    <div>
-        To begin please sign in
-    </div>
-}
+
+
+
+
+
 
 

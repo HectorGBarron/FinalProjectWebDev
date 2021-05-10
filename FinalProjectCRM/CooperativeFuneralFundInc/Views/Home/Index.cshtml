@@ -2,9 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
 
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name</h1>
 </div>
 
 
@@ -16,12 +16,14 @@
 @if (signInManager.IsSignedIn(User))
 {
     // signed-in user - Log Out button and username
-    <li class="nav-item">
 
-        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="TaskManagements" asp-action="Create">Create Task</a>
-    </li>
+
+    <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Create">Create Task</a>
+    <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Create">Supply Request</a>
+    <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Index">Edit Task</a>
 }
-else { 
+else
+{
     <div>
         To begin please sign in
     </div>

@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using CooperativeFuneralFundInc.Models;
-using CooperativeFuneralFundInc.Models.SupplyRequest;
+
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
 using CooperativeFuneralFundInc.Areas.Admin.Models;
 
 namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Members")]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -37,7 +37,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
                 Users = users,
                 Roles = roleManager.Roles
             };
-            return View(model);
+            return View("User",model);
         }
 
         [HttpPost]
@@ -130,6 +130,11 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
             var result = await roleManager.CreateAsync(new IdentityRole("Admin"));
             if (result.Succeeded) { }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult SupplyR()
+        {
+            return RedirectToAction("Index", "SupplyRequests");
         }
     }
 }

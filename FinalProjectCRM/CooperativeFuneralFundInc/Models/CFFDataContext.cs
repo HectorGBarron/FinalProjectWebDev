@@ -30,6 +30,8 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
         public DbSet<PhoneNumberType> NumberTypes { get; set; }
 
+
+        public DbSet<Status> Statuses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

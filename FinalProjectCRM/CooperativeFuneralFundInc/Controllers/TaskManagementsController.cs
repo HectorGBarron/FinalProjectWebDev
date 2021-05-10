@@ -9,6 +9,7 @@ using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.UserManagement;
+using CooperativeFuneralFundInc.Models;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -54,7 +55,9 @@ namespace CooperativeFuneralFundInc.Controllers
         {
             ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID");
             ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID");
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID");
+            //ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID");
+            ViewData["StatusName"] = new SelectList(_context.Statuses, "StatusID", "StatusDescription");
+            
             return View();
         }
 

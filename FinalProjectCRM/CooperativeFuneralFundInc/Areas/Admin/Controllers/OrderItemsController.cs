@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Members")]
     [Area("Admin")]
     public class OrderItemsController : Controller
     {
