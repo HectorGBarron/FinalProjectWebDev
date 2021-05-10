@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,18 +12,18 @@ namespace CooperativeFuneralFundInc.Models.TasksManagement
     {
 
         public int TaskManagementId { get; set; }
-        public int StatusID { get; set; }
-        public Status StatusName { get; set; }
+     //   public int Status { get; set; }
+        public string Status { get; set; }
 
-        public int OwnerID { get; set; }
-        public Owner OwnerName { get; set; }
+        //public int Owner { get; set; }
+        public string Owner { get; set; }
         public string RelatedTo { get; set; }
         public string RelatedToName { get; set; }
 
-        public int RequestTypeID { get; set; }
-        public RequestType RequestTypeDescription { get; set; }
+      //  public int RequestType { get; set; }
+        public string RequestType { get; set; }
 
-        public int Priority { get; set; }
+        public string Priority { get; set; }
         public string CreateBy { get; set; }
         public DateTime CreatedTime { get; set; }
         public string UpdatedBy { get; set; }

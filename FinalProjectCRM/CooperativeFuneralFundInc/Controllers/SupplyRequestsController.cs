@@ -19,14 +19,15 @@ namespace CooperativeFuneralFundInc.Controllers
             _context = context;
         }
 
-        // GET: SupplyRequests
+        // GET: Admin/SupplyRequests
         public async Task<IActionResult> Index()
         {
-            var cFFDataContext = _context.SupplyRequests.Include(s => s.Client).Include(s => s.OrderItems).Include(s => s.Owner).Include(s => s.RequestTypeDescription).Include(s => s.Status).Include(s => s.SupplyRequestOrigin);
+            var cFFDataContext = _context.SupplyRequests;
+          
             return View(await cFFDataContext.ToListAsync());
         }
 
-        // GET: SupplyRequests/Details/5
+        // GET: Admin/SupplyRequests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,12 +36,7 @@ namespace CooperativeFuneralFundInc.Controllers
             }
 
             var supplyRequest = await _context.SupplyRequests
-                .Include(s => s.Client)
-                .Include(s => s.OrderItems)
-                .Include(s => s.Owner)
-                .Include(s => s.RequestTypeDescription)
-                .Include(s => s.Status)
-                .Include(s => s.SupplyRequestOrigin)
+               
                 .FirstOrDefaultAsync(m => m.SupplyRequestId == id);
             if (supplyRequest == null)
             {
@@ -50,24 +46,24 @@ namespace CooperativeFuneralFundInc.Controllers
             return View(supplyRequest);
         }
 
-        // GET: SupplyRequests/Create
+        // GET: Admin/SupplyRequests/Create
         public IActionResult Create()
         {
-            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierID");
-            ViewData["OrderItemsID"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsID");
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID");
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID");
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID");
-            ViewData["RequestOriginId"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginId");
+            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierName");
+            ViewData["OrderItems"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsName");
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "OwnerId", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["RequestOrigin"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginDescription");
             return View();
         }
 
-        // POST: SupplyRequests/Create
+        // POST: Admin/SupplyRequests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SupplyRequestId,StatusID,StatusComments,OrderItemsID,RequestOriginId,RequestTypeID,ClientSupplierID,OwnerID,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
+        public async Task<IActionResult> Create([Bind("SupplyRequestId,Status,StatusComments,OrderItems,SupplyRequestOrigin,RequestType,Client,Owner,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
         {
             if (ModelState.IsValid)
             {
@@ -75,16 +71,16 @@ namespace CooperativeFuneralFundInc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierID", supplyRequest.ClientSupplierID);
-            ViewData["OrderItemsID"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsID", supplyRequest.OrderItemsID);
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", supplyRequest.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", supplyRequest.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", supplyRequest.StatusID);
-            ViewData["RequestOriginId"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginId", supplyRequest.RequestOriginId);
+            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierName");
+            ViewData["OrderItems"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsName");
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "OwnerId", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["RequestOrigin"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginDescription");
             return View(supplyRequest);
         }
 
-        // GET: SupplyRequests/Edit/5
+        // GET: Admin/SupplyRequests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,21 +93,21 @@ namespace CooperativeFuneralFundInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierID", supplyRequest.ClientSupplierID);
-            ViewData["OrderItemsID"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsID", supplyRequest.OrderItemsID);
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", supplyRequest.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", supplyRequest.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", supplyRequest.StatusID);
-            ViewData["RequestOriginId"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginId", supplyRequest.RequestOriginId);
+            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierName");
+            ViewData["OrderItems"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsName");
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "OwnerId", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["RequestOrigin"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginDescription");
             return View(supplyRequest);
         }
 
-        // POST: SupplyRequests/Edit/5
+        // POST: Admin/SupplyRequests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SupplyRequestId,StatusID,StatusComments,OrderItemsID,RequestOriginId,RequestTypeID,ClientSupplierID,OwnerID,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
+        public async Task<IActionResult> Edit(int id, [Bind("SupplyRequestId,Status,StatusComments,OrderItemsID,RequestOriginId,RequestType,ClientSupplierID,Owner,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
         {
             if (id != supplyRequest.SupplyRequestId)
             {
@@ -138,16 +134,16 @@ namespace CooperativeFuneralFundInc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierID", supplyRequest.ClientSupplierID);
-            ViewData["OrderItemsID"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsID", supplyRequest.OrderItemsID);
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", supplyRequest.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", supplyRequest.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", supplyRequest.StatusID);
-            ViewData["RequestOriginId"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginId", supplyRequest.RequestOriginId);
+            ViewData["ClientSupplierID"] = new SelectList(_context.ClientSuppliers, "ClientSupplierID", "ClientSupplierName");
+            ViewData["OrderItems"] = new SelectList(_context.OrderItems, "OrderItemsID", "OrderItemsName");
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "OwnerId", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["RequestOrigin"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginDescription");
             return View(supplyRequest);
         }
 
-        // GET: SupplyRequests/Delete/5
+        // GET: Admin/SupplyRequests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -156,12 +152,7 @@ namespace CooperativeFuneralFundInc.Controllers
             }
 
             var supplyRequest = await _context.SupplyRequests
-                .Include(s => s.Client)
-                .Include(s => s.OrderItems)
-                .Include(s => s.Owner)
-                .Include(s => s.RequestTypeDescription)
-                .Include(s => s.Status)
-                .Include(s => s.SupplyRequestOrigin)
+               
                 .FirstOrDefaultAsync(m => m.SupplyRequestId == id);
             if (supplyRequest == null)
             {
@@ -171,7 +162,7 @@ namespace CooperativeFuneralFundInc.Controllers
             return View(supplyRequest);
         }
 
-        // POST: SupplyRequests/Delete/5
+        // POST: Admin/SupplyRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

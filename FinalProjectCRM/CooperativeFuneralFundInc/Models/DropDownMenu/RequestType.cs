@@ -7,9 +7,7 @@ namespace CooperativeFuneralFundInc.Models.DropDownMenu
 {
     public class RequestType
     {
-        public int RequestTypeID { get; set; }
+        public string RequestTypeId { get; set; }
         public string RequestTypeDescription { get; set; }
-
-        
     }
 }

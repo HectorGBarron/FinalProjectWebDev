@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210508222841_AddIdentityTables")]
-    partial class AddIdentityTables
+    [Migration("20210510210144_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,52 +48,10 @@ namespace CooperativeFuneralFundInc.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.NotesSection", b =>
-                {
-                    b.Property<int>("NotesSectionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Archived")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestOriginId")
-                        .HasColumnType("int");
-
-                    b.HasKey("NotesSectionId");
-
-                    b.HasIndex("RequestOriginId");
-
-                    b.ToTable("NotesSection");
-
-                    b.HasData(
-                        new
-                        {
-                            NotesSectionId = 1,
-                            Archived = false,
-                            CreatedBy = "Developer",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Note = "Test note",
-                            RequestOriginId = 1
-                        });
-                });
-
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.OrderItems", b =>
                 {
-                    b.Property<int>("OrderItemsID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("OrderItemsID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("OrderItemsName")
                         .HasColumnType("nvarchar(max)");
@@ -105,69 +63,69 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasData(
                         new
                         {
-                            OrderItemsID = 1,
+                            OrderItemsID = "Preneed agreement",
                             OrderItemsName = "Preneed agreement"
                         },
                         new
                         {
-                            OrderItemsID = 2,
+                            OrderItemsID = "Account update/Claim form",
                             OrderItemsName = "Account update/Claim form"
                         },
                         new
                         {
-                            OrderItemsID = 3,
+                            OrderItemsID = "Itemizations form",
                             OrderItemsName = "Itemizations form"
                         },
                         new
                         {
-                            OrderItemsID = 4,
+                            OrderItemsID = "Return envelopes.",
                             OrderItemsName = "Return envelopes."
                         },
                         new
                         {
-                            OrderItemsID = 5,
+                            OrderItemsID = "Postage paid envelopes.",
                             OrderItemsName = "Postage paid envelopes."
                         },
                         new
                         {
-                            OrderItemsID = 6,
+                            OrderItemsID = "Deposit tickets",
                             OrderItemsName = "Deposit tickets"
                         },
                         new
                         {
-                            OrderItemsID = 7,
+                            OrderItemsID = "Planning guides",
                             OrderItemsName = "Planning guides"
                         },
                         new
                         {
-                            OrderItemsID = 8,
+                            OrderItemsID = "Funding your funeral in advance brochure",
                             OrderItemsName = "Funding your funeral in advance brochure"
                         },
                         new
                         {
-                            OrderItemsID = 9,
+                            OrderItemsID = "Monthly monitors",
                             OrderItemsName = "Monthly monitors"
                         },
                         new
                         {
-                            OrderItemsID = 10,
+                            OrderItemsID = "Service and merchandise forms",
                             OrderItemsName = "Service and merchandise forms"
                         },
                         new
                         {
-                            OrderItemsID = 11,
+                            OrderItemsID = "Investment election form",
                             OrderItemsName = "Investment election form"
                         },
                         new
                         {
-                            OrderItemsID = 12,
+                            OrderItemsID = "Other",
                             OrderItemsName = "Other"
                         });
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.Owner", b =>
                 {
-                    b.Property<int>("OwnerID")
+                    b.Property<int>("OwnerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -175,24 +133,85 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OwnerID");
+                    b.HasKey("OwnerId");
 
                     b.ToTable("OwnerNames");
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.Priority", b =>
+                {
+                    b.Property<string>("PriorityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PriorityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PriorityId");
+
+                    b.ToTable("Priorities");
 
                     b.HasData(
                         new
                         {
-                            OwnerID = 1,
-                            OwnerName = "Person 1"
+                            PriorityId = "high",
+                            PriorityName = "High"
+                        },
+                        new
+                        {
+                            PriorityId = "medium",
+                            PriorityName = "Medium"
+                        },
+                        new
+                        {
+                            PriorityId = "low",
+                            PriorityName = "Low"
+                        });
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.RelatedTo", b =>
+                {
+                    b.Property<string>("RelatedToId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RelatedToName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RelatedToId");
+
+                    b.ToTable("RelatedTos");
+
+                    b.HasData(
+                        new
+                        {
+                            RelatedToId = "customer",
+                            RelatedToName = "Customer"
+                        },
+                        new
+                        {
+                            RelatedToId = "potential customer",
+                            RelatedToName = "Potential customer"
+                        },
+                        new
+                        {
+                            RelatedToId = "lead",
+                            RelatedToName = "Lead"
+                        },
+                        new
+                        {
+                            RelatedToId = "in-house",
+                            RelatedToName = "In-house"
+                        },
+                        new
+                        {
+                            RelatedToId = "other",
+                            RelatedToName = "Other"
                         });
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.RequestOrigin", b =>
                 {
-                    b.Property<int>("RequestOriginId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("RequestOriginId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RequestOriginDescription")
                         .HasColumnType("nvarchar(max)");
@@ -204,101 +223,97 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasData(
                         new
                         {
-                            RequestOriginId = 1,
+                            RequestOriginId = "Phone",
                             RequestOriginDescription = "Phone"
                         },
                         new
                         {
-                            RequestOriginId = 2,
+                            RequestOriginId = "Fax",
                             RequestOriginDescription = "Fax"
                         },
                         new
                         {
-                            RequestOriginId = 3,
+                            RequestOriginId = "Email",
                             RequestOriginDescription = "Email"
                         },
                         new
                         {
-                            RequestOriginId = 4,
+                            RequestOriginId = "Mail",
                             RequestOriginDescription = "Mail"
                         },
                         new
                         {
-                            RequestOriginId = 5,
+                            RequestOriginId = "Regional Manager",
                             RequestOriginDescription = "Regional manager"
                         },
                         new
                         {
-                            RequestOriginId = 6,
+                            RequestOriginId = "Other",
                             RequestOriginDescription = "Other"
                         });
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.RequestType", b =>
                 {
-                    b.Property<int>("RequestTypeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("RequestTypeId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RequestTypeDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("RequestTypeID");
+                    b.HasKey("RequestTypeId");
 
-                    b.ToTable("SupplyRequestTypes");
+                    b.ToTable("RequestTypes");
 
                     b.HasData(
                         new
                         {
-                            RequestTypeID = 1,
+                            RequestTypeId = "Vendor",
                             RequestTypeDescription = "Vendor"
                         },
                         new
                         {
-                            RequestTypeID = 2,
+                            RequestTypeId = "Client",
                             RequestTypeDescription = "Client"
                         });
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.Status", b =>
                 {
-                    b.Property<int>("StatusID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("StatusDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("StatusID");
+                    b.HasKey("StatusId");
 
-                    b.ToTable("Status");
+                    b.ToTable("Statuses");
 
                     b.HasData(
                         new
                         {
-                            StatusID = 1,
+                            StatusId = "New",
                             StatusDescription = "New"
                         },
                         new
                         {
-                            StatusID = 2,
+                            StatusId = "In-Process",
                             StatusDescription = "In-Process"
                         },
                         new
                         {
-                            StatusID = 3,
+                            StatusId = "Completed",
                             StatusDescription = "Completed"
                         },
                         new
                         {
-                            StatusID = 4,
+                            StatusId = "On hold",
                             StatusDescription = "On hold"
                         },
                         new
                         {
-                            StatusID = 5,
+                            StatusId = "Cancelled",
                             StatusDescription = "Cancelled"
                         });
                 });
@@ -310,70 +325,45 @@ namespace CooperativeFuneralFundInc.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClientSupplierID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreateTime")
+                    b.Property<string>("Client")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderItemsID")
-                        .HasColumnType("int");
+                    b.Property<string>("OrderItems")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OwnerID")
-                        .HasColumnType("int");
+                    b.Property<string>("Owner")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RequestOriginId")
-                        .HasColumnType("int");
+                    b.Property<string>("RequestType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RequestTypeID")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StatusComments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StatusID")
-                        .HasColumnType("int");
+                    b.Property<string>("SupplyRequestOrigin")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("SupplyRequestId");
 
-                    b.HasIndex("ClientSupplierID");
-
-                    b.HasIndex("OrderItemsID");
-
-                    b.HasIndex("OwnerID");
-
-                    b.HasIndex("RequestOriginId");
-
-                    b.HasIndex("RequestTypeID");
-
-                    b.HasIndex("StatusID");
-
                     b.ToTable("SupplyRequests");
-
-                    b.HasData(
-                        new
-                        {
-                            SupplyRequestId = 1,
-                            ClientSupplierID = 1,
-                            CreateTime = "Test",
-                            CreatedBy = "Test",
-                            OrderItemsID = 1,
-                            OwnerID = 1,
-                            RequestOriginId = 1,
-                            RequestTypeID = 1,
-                            StatusComments = "test",
-                            StatusID = 1,
-                            UpdatedBy = "Test"
-                        });
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", b =>
@@ -389,11 +379,11 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OwnerID")
-                        .HasColumnType("int");
+                    b.Property<string>("Owner")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Priority")
-                        .HasColumnType("int");
+                    b.Property<string>("Priority")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RelatedTo")
                         .HasColumnType("nvarchar(max)");
@@ -401,11 +391,11 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("RelatedToName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RequestTypeID")
-                        .HasColumnType("int");
+                    b.Property<string>("RequestType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StatusID")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -415,28 +405,41 @@ namespace CooperativeFuneralFundInc.Migrations
 
                     b.HasKey("TaskManagementId");
 
-                    b.HasIndex("OwnerID");
-
-                    b.HasIndex("RequestTypeID");
-
-                    b.HasIndex("StatusID");
-
                     b.ToTable("TaskManagements");
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.UserManagement.PhoneNumberType", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NumberTypes");
 
                     b.HasData(
                         new
                         {
-                            TaskManagementId = 1,
-                            CreateBy = "Test",
-                            CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OwnerID = 1,
-                            Priority = 1,
-                            RelatedTo = "Test",
-                            RelatedToName = "Test",
-                            RequestTypeID = 1,
-                            StatusID = 1,
-                            UpdatedBy = "Test",
-                            UpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = "home",
+                            Name = "Home"
+                        },
+                        new
+                        {
+                            Id = "mobile",
+                            Name = "Mobile"
+                        },
+                        new
+                        {
+                            Id = "work",
+                            Name = "work"
+                        },
+                        new
+                        {
+                            Id = "other",
+                            Name = "Other"
                         });
                 });
 
@@ -646,75 +649,6 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.NotesSection", b =>
-                {
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.RequestOrigin", "RequestOriginDescription")
-                        .WithMany()
-                        .HasForeignKey("RequestOriginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.SupplyRequest.SupplyRequest", b =>
-                {
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.ClientSupplier", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientSupplierID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.OrderItems", "OrderItems")
-                        .WithMany()
-                        .HasForeignKey("OrderItemsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Owner", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.RequestOrigin", "SupplyRequestOrigin")
-                        .WithMany()
-                        .HasForeignKey("RequestOriginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.RequestType", "RequestTypeDescription")
-                        .WithMany()
-                        .HasForeignKey("RequestTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", b =>
-                {
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Owner", "OwnerName")
-                        .WithMany()
-                        .HasForeignKey("OwnerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.RequestType", "RequestTypeDescription")
-                        .WithMany()
-                        .HasForeignKey("RequestTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CooperativeFuneralFundInc.Models.DropDownMenu.Status", "StatusName")
-                        .WithMany()
-                        .HasForeignKey("StatusID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

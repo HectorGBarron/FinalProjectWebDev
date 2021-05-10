@@ -39,7 +39,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
             }
 
             var owner = await _context.OwnerNames
-                .FirstOrDefaultAsync(m => m.OwnerID == id);
+                .FirstOrDefaultAsync(m => m.OwnerId == id);
             if (owner == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OwnerID,OwnerName")] Owner owner)
+        public async Task<IActionResult> Create([Bind("Owner,OwnerName")] Owner owner)
         {
             if (ModelState.IsValid)
             {
@@ -91,9 +91,9 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OwnerID,OwnerName")] Owner owner)
+        public async Task<IActionResult> Edit(int id, [Bind("OwnerId,OwnerName")] Owner owner)
         {
-            if (id != owner.OwnerID)
+            if (id != owner.OwnerId)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OwnerExists(owner.OwnerID))
+                    if (!OwnerExists(owner.OwnerId))
                     {
                         return NotFound();
                     }
@@ -130,7 +130,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
             }
 
             var owner = await _context.OwnerNames
-                .FirstOrDefaultAsync(m => m.OwnerID == id);
+                .FirstOrDefaultAsync(m => m.OwnerId == id);
             if (owner == null)
             {
                 return NotFound();
@@ -152,7 +152,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 
         private bool OwnerExists(int id)
         {
-            return _context.OwnerNames.Any(e => e.OwnerID == id);
+            return _context.OwnerNames.Any(e => e.OwnerId == id);
         }
     }
 }

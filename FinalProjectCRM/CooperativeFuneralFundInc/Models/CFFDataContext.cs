@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
-using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
 
@@ -23,12 +20,14 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DbSet<ClientSupplier> ClientSuppliers { get; set; }
         public DbSet<OrderItems> OrderItems { get; set; }
         public DbSet<Owner> OwnerNames { get; set; }
-        public DbSet<RequestType> SupplyRequestTypes { get; set; }
+        public DbSet<RequestType> RequestTypes { get; set; }
         public DbSet<RequestOrigin> RequestOrigins { get; set; }
 
         public DbSet<TaskManagement> TaskManagements { get; set; }
 
         public DbSet<PhoneNumberType> NumberTypes { get; set; }
+        public DbSet<Priority> Priorities { get; set; }
+        public DbSet<RelatedTo> RelatedTos { get; set; }
 
 
         public DbSet<Status> Statuses { get; set; }
@@ -37,65 +36,65 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             base.OnModelCreating(modelBuilder);
 
 
-            modelBuilder.Entity<TaskManagement>().HasData(
+          /*  modelBuilder.Entity<TaskManagement>().HasData(
                 new TaskManagement
                 {
                     TaskManagementId=1,
-                    StatusID=1,
-                    OwnerID=1,
+                    Status N = "New",
+                    Owner=1,
                     RelatedTo="Test",
                     RelatedToName="Test",
-                    RequestTypeID=1,
+                    RequestType=1,
                     Priority=1,
                     CreateBy="Test",
                     UpdatedBy="Test"
                 }
-                );
+                );*/
 
-            modelBuilder.Entity<SupplyRequest>().HasData
+          /*  modelBuilder.Entity<SupplyRequest>().HasData
          (
                new SupplyRequest
                {
                    SupplyRequestId=1,
-                   StatusID = 1,
+                   Status = 1,
                    StatusComments = "test",
                    OrderItemsID = 1,
                    RequestOriginId = 1,
-                   RequestTypeID = 1,
+                   RequestType = 1,
                    ClientSupplierID = 1,
-                   OwnerID = 1,
+                   Owner = 1,
                    CreatedBy = "Test",
-                   CreateTime = "Test",
+                   CreateTime = DateTime.Now,
                    UpdatedBy = "Test"
                }
-               );
+               );*/
 
 
         modelBuilder.Entity<Status>().HasData(
 
                new Status
                {
-                   StatusID = 1,
+                   StatusId = "New",
                    StatusDescription = "New"
                },
                new Status
                {
-                   StatusID = 2,
+                   StatusId = "In-Process",
                    StatusDescription = "In-Process"
                },
                new Status
                {
-                   StatusID = 3,
+                   StatusId = "Completed",
                    StatusDescription = "Completed"
                },
                new Status
                {
-                   StatusID = 4,
+                   StatusId = "On hold",
                    StatusDescription = "On hold"
                },
                new Status
                {
-                   StatusID = 5,
+                   StatusId = "Cancelled",
                    StatusDescription = "Cancelled"
                }
          );
@@ -104,62 +103,62 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                 (
                     new OrderItems
                     {
-                        OrderItemsID = 1,
+                        OrderItemsID = "Preneed agreement",
                         OrderItemsName = "Preneed agreement"
                     },
                     new OrderItems
                        {
-                        OrderItemsID = 2,
+                        OrderItemsID = "Account update/Claim form",
                         OrderItemsName = "Account update/Claim form"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 3,
+                        OrderItemsID = "Itemizations form",
                         OrderItemsName = "Itemizations form"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 4,
+                        OrderItemsID = "Return envelopes.",
                         OrderItemsName = "Return envelopes."
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 5,
+                        OrderItemsID = "Postage paid envelopes.",
                         OrderItemsName = "Postage paid envelopes."
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 6,
+                        OrderItemsID = "Deposit tickets",
                         OrderItemsName = "Deposit tickets"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 7,
+                        OrderItemsID = "Planning guides",
                         OrderItemsName = "Planning guides"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 8,
+                        OrderItemsID = "Funding your funeral in advance brochure",
                         OrderItemsName = "Funding your funeral in advance brochure"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 9,
+                        OrderItemsID = "Monthly monitors",
                         OrderItemsName = "Monthly monitors"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 10,
+                        OrderItemsID = "Service and merchandise forms",
                         OrderItemsName = "Service and merchandise forms"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 11,
+                        OrderItemsID = "Investment election form",
                         OrderItemsName = "Investment election form"
                     },
                     new OrderItems
                     {
-                        OrderItemsID = 12,
+                        OrderItemsID = "Other",
                         OrderItemsName = "Other"
                     }
                 );
@@ -167,38 +166,38 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
                     new RequestOrigin
                     {
-                        RequestOriginId = 1,
+                        RequestOriginId = "Phone",
                         RequestOriginDescription = "Phone"
                     },
                     new RequestOrigin
                     {
-                        RequestOriginId = 2,
+                        RequestOriginId = "Fax",
                         RequestOriginDescription = "Fax"
                     },
                     new RequestOrigin
                     {
-                        RequestOriginId = 3,
+                        RequestOriginId = "Email",
                         RequestOriginDescription = "Email"
                     },
                     new RequestOrigin
                     {
-                        RequestOriginId = 4,
+                        RequestOriginId = "Mail",
                         RequestOriginDescription = "Mail"
                     },
                     new RequestOrigin
                     {
-                        RequestOriginId = 5,
+                        RequestOriginId = "Regional Manager",
                         RequestOriginDescription = "Regional manager"
                     },
                     new RequestOrigin
                     {
-                        RequestOriginId = 6,
+                        RequestOriginId = "Other",
                         RequestOriginDescription = "Other"
                     }
                 );
             modelBuilder.Entity<RequestType>().HasData(
-                new RequestType { RequestTypeID = 1, RequestTypeDescription = "Vendor" },
-                new RequestType { RequestTypeID = 2, RequestTypeDescription = "Client" }
+                new RequestType { RequestTypeId = "Vendor", RequestTypeDescription = "Vendor" },
+                new RequestType { RequestTypeId = "Client", RequestTypeDescription = "Client" }
                 );
 
             modelBuilder.Entity<ClientSupplier>().HasData(
@@ -206,23 +205,33 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                 new ClientSupplier { ClientSupplierID = 2, ClientSupplierName = "Client 2" }
                 );
 
-            modelBuilder.Entity<Owner>().HasData(
-                
-                new Owner { OwnerID=1,OwnerName="Person 1"}
-                
-                
-                );
+            modelBuilder.Entity<Priority>().HasData(
+                     new Priority { PriorityId = "High", PriorityName = "High" },
+                     new Priority { PriorityId = "Medium", PriorityName = "Medium" },
+                     new Priority { PriorityId = "Low", PriorityName = "Low" }
 
-            modelBuilder.Entity<NotesSection>().HasData(
-                new NotesSection {NotesSectionId=1, RequestOriginId = 1, Note = "Test note", CreatedBy = "Developer" }
-                );
+                     );
 
+            modelBuilder.Entity<RelatedTo>().HasData(
+          new RelatedTo { RelatedToId = "Customer", RelatedToName = "Customer" },
+          new RelatedTo { RelatedToId = "Potential customer", RelatedToName = "Potential customer" },
+          new RelatedTo { RelatedToId = "Lead", RelatedToName = "Lead" },
+          new RelatedTo { RelatedToId = "In-house", RelatedToName = "In-house" },
+          new RelatedTo { RelatedToId = "Other", RelatedToName = "Other" }
+          );
+
+
+
+            /*  modelBuilder.Entity<NotesSection>().HasData(
+                  new NotesSection {NotesSectionId=1, RequestOriginId = 1, Note = "Test note", CreatedBy = "Developer" }
+                  );
+            */
 
             modelBuilder.Entity<PhoneNumberType>().HasData(
-                new PhoneNumberType { Id = "home", Name = "Home" },
-                new PhoneNumberType { Id = "mobile", Name = "Mobile" },
-                new PhoneNumberType { Id = "work", Name = "work" },
-                new PhoneNumberType { Id = "other", Name = "Other" }
+                new PhoneNumberType { Id = "Home", Name = "Home" },
+                new PhoneNumberType { Id = "Mobile", Name = "Mobile" },
+                new PhoneNumberType { Id = "Work", Name = "work" },
+                new PhoneNumberType { Id = "Other", Name = "Other" }
 
   );
 

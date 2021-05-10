@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace CooperativeFuneralFundInc.Models.DropDownMenu
 {
-    public class Status
+    public class Priority
     {
-        public string StatusId { get; set; }
-        public string StatusDescription { get; set; }
-
-        
+        public string PriorityId { get; set; }
+        public string PriorityName { get; set; }
     }
 }
