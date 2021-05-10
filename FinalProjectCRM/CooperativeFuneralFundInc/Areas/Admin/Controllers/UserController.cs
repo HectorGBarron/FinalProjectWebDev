@@ -132,9 +132,6 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult SupplyR()
-        {
-            return RedirectToAction("Index", "SupplyRequests");
-        }
+        
     }
 }
