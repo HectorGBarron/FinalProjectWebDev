@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210511024959_tableClient")]
-    partial class tableClient
+    [Migration("20210511151914_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("ClientContacts")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ClientName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Documents")
                         .HasColumnType("nvarchar(max)");
 
@@ -47,6 +50,7 @@ namespace CooperativeFuneralFundInc.Migrations
                             ClientID = 1,
                             Branding = "",
                             ClientContacts = "",
+                            ClientName = "",
                             Documents = ""
                         });
                 });

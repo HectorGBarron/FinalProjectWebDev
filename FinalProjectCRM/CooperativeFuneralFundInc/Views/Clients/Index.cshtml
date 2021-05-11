@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Documents)
             </th>
             <th>
@@ -28,6 +31,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Documents)
             </td>
             <td>
@@ -37,17 +43,9 @@
                 @Html.DisplayFor(modelItem => item.ClientContacts)
             </td>
             <td>
-                @if (User.IsInRole("Visitor"))
-                {
-                    <a asp-action="Details" asp-route-id="@item.ClientID">Details</a>
-                }
-                else
-                {
-                    <a asp-action="Edit" asp-route-id="@item.ClientID">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.ClientID">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.ClientID">Delete</a>
-                }
-
+                <a asp-action="Edit" asp-route-id="@item.ClientID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClientID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClientID">Delete</a>
             </td>
         </tr>
 }

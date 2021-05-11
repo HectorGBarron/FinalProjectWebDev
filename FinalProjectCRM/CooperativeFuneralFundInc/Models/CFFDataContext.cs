@@ -39,7 +39,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Client>().HasData(
-                new Client { ClientID=1,Documents="",Branding="",ClientContacts=""}
+                new Client { ClientID=1,ClientName="",Documents="",Branding="",ClientContacts=""}
                 );
           /*  modelBuilder.Entity<TaskManagement>().HasData(
                 new TaskManagement

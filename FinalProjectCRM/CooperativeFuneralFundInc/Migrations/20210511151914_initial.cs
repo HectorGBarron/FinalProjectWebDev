@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CooperativeFuneralFundInc.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,22 @@ namespace CooperativeFuneralFundInc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    ClientID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientName = table.Column<string>(nullable: true),
+                    Documents = table.Column<string>(nullable: true),
+                    Branding = table.Column<string>(nullable: true),
+                    ClientContacts = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.ClientID);
                 });
 
             migrationBuilder.CreateTable(
@@ -320,6 +336,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "ClientID", "Branding", "ClientContacts", "ClientName", "Documents" },
+                values: new object[] { 1, "", "", "", "" });
+
+            migrationBuilder.InsertData(
                 table: "NumberTypes",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -344,8 +365,8 @@ namespace CooperativeFuneralFundInc.Migrations
                     { "Investment election form", "Investment election form" },
                     { "Other", "Other" },
                     { "Preneed agreement", "Preneed agreement" },
-                    { "Account update/Claim form", "Account update/Claim form" },
                     { "Itemizations form", "Itemizations form" },
+                    { "Account update/Claim form", "Account update/Claim form" },
                     { "Return envelopes.", "Return envelopes." }
                 });
 
@@ -364,10 +385,10 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RelatedToId", "RelatedToName" },
                 values: new object[,]
                 {
-                    { "Lead", "Lead" },
+                    { "Potential customer", "Potential customer" },
                     { "In-house", "In-house" },
                     { "Customer", "Customer" },
-                    { "Potential customer", "Potential customer" },
+                    { "Lead", "Lead" },
                     { "Other", "Other" }
                 });
 
@@ -461,6 +482,9 @@ namespace CooperativeFuneralFundInc.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "ClientSuppliers");

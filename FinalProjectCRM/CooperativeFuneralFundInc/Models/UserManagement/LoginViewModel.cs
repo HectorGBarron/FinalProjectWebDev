@@ -8,6 +8,9 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
 {
     public class LoginViewModel
     {
+        
+        
+
         [Required(ErrorMessage = "Please enter a username.")]
         [StringLength(255)]
         public string Username { get; set; }
