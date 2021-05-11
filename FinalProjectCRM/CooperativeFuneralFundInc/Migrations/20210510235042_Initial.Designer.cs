@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210510210144_Initial")]
+    [Migration("20210510235042_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,17 +153,17 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasData(
                         new
                         {
-                            PriorityId = "high",
+                            PriorityId = "High",
                             PriorityName = "High"
                         },
                         new
                         {
-                            PriorityId = "medium",
+                            PriorityId = "Medium",
                             PriorityName = "Medium"
                         },
                         new
                         {
-                            PriorityId = "low",
+                            PriorityId = "Low",
                             PriorityName = "Low"
                         });
                 });
@@ -183,27 +183,27 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasData(
                         new
                         {
-                            RelatedToId = "customer",
+                            RelatedToId = "Customer",
                             RelatedToName = "Customer"
                         },
                         new
                         {
-                            RelatedToId = "potential customer",
+                            RelatedToId = "Potential customer",
                             RelatedToName = "Potential customer"
                         },
                         new
                         {
-                            RelatedToId = "lead",
+                            RelatedToId = "Lead",
                             RelatedToName = "Lead"
                         },
                         new
                         {
-                            RelatedToId = "in-house",
+                            RelatedToId = "In-house",
                             RelatedToName = "In-house"
                         },
                         new
                         {
-                            RelatedToId = "other",
+                            RelatedToId = "Other",
                             RelatedToName = "Other"
                         });
                 });
@@ -423,22 +423,22 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "home",
+                            Id = "Home",
                             Name = "Home"
                         },
                         new
                         {
-                            Id = "mobile",
+                            Id = "Mobile",
                             Name = "Mobile"
                         },
                         new
                         {
-                            Id = "work",
+                            Id = "Work",
                             Name = "work"
                         },
                         new
                         {
-                            Id = "other",
+                            Id = "Other",
                             Name = "Other"
                         });
                 });

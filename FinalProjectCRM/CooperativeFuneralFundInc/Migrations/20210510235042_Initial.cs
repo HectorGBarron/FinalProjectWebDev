@@ -324,10 +324,10 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { "mobile", "Mobile" },
-                    { "home", "Home" },
-                    { "work", "work" },
-                    { "other", "Other" }
+                    { "Mobile", "Mobile" },
+                    { "Home", "Home" },
+                    { "Work", "work" },
+                    { "Other", "Other" }
                 });
 
             migrationBuilder.InsertData(
@@ -354,9 +354,9 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "PriorityId", "PriorityName" },
                 values: new object[,]
                 {
-                    { "high", "High" },
-                    { "medium", "Medium" },
-                    { "low", "Low" }
+                    { "High", "High" },
+                    { "Medium", "Medium" },
+                    { "Low", "Low" }
                 });
 
             migrationBuilder.InsertData(
@@ -364,11 +364,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RelatedToId", "RelatedToName" },
                 values: new object[,]
                 {
-                    { "lead", "Lead" },
-                    { "in-house", "In-house" },
-                    { "customer", "Customer" },
-                    { "potential customer", "Potential customer" },
-                    { "other", "Other" }
+                    { "Lead", "Lead" },
+                    { "In-house", "In-house" },
+                    { "Customer", "Customer" },
+                    { "Potential customer", "Potential customer" },
+                    { "Other", "Other" }
                 });
 
             migrationBuilder.InsertData(
