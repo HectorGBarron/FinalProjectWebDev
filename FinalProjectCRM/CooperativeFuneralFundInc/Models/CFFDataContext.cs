@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
+using CooperativeFuneralFundInc.Models.ClientManagement;
 
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -29,13 +30,17 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<RelatedTo> RelatedTos { get; set; }
 
+        public DbSet<Client> Clients { get; set; }
+
 
         public DbSet<Status> Statuses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-
+            modelBuilder.Entity<Client>().HasData(
+                new Client { ClientID=1,Documents="",Branding="",ClientContacts=""}
+                );
           /*  modelBuilder.Entity<TaskManagement>().HasData(
                 new TaskManagement
                 {
