@@ -17,12 +17,21 @@
 {
     // signed-in user - Log Out button and username
 
-    
+
     <div class="dropdown align-items-center">
         <button class="dropbtn">Tasks</button>
         <div class="dropdown-content">
-            <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Create">New</a>
-            <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Index">List of Tasks</a>
+            
+
+            @if (User.IsInRole("Visitor"))
+            {
+                <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Index">List of Tasks</a>
+            }
+            else
+            {
+                 <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Create">New</a>
+                <a class="btn btn-secondary" asp-area="" asp-controller="TaskManagements" asp-action="Index">List of Tasks</a>
+            }
         </div>
     </div>
 
@@ -30,8 +39,16 @@
     <div class="dropdown">
         <button class="dropbtn">Supply Request</button>
         <div class="dropdown-content">
-            <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Create">New</a>
-            <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Index">List of Supply Request</a>
+
+            @if (User.IsInRole("Visitor"))
+            {
+                <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Index">List of Supply Request</a>
+            }
+            else
+            {
+                <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Create">New</a>
+                <a class="btn btn-secondary" asp-area="" asp-controller="SupplyRequests" asp-action="Index">List of Supply Request</a>
+            }
         </div>
     </div>
 
@@ -39,9 +56,21 @@
     <div class="dropdown">
         <button class="dropbtn">Clients</button>
         <div class="dropdown-content">
-            <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Create">New </a>
-            <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Index">List </a>
-            
+
+
+            @if (User.IsInRole("Visitor"))
+            {
+                <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Index">List </a>
+            }
+            else
+            {
+                <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Create">New </a>
+                <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Index">List </a>
+            }
+
+
+
+
         </div>
     </div>
 

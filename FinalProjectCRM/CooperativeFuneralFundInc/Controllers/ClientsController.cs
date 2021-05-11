@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CooperativeFuneralFundInc.Models.ClientManagement;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -20,6 +21,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: Clients
+        [Authorize(Roles = "Admin, User, Visitor")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clients.ToListAsync());
@@ -44,6 +46,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: Clients/Create
+        [Authorize(Roles = "Admin, User")]
         public IActionResult Create()
         {
             return View();
@@ -133,7 +136,7 @@ namespace CooperativeFuneralFundInc.Controllers
 
             return View(client);
         }
-
+        [Authorize(Roles = "Admin, User")]
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -14,11 +15,12 @@ namespace CooperativeFuneralFundInc.Controllers
     {
         private readonly CFFDataContext _context;
 
+        
         public SupplyRequestsController(CFFDataContext context)
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Admin, User, Visitor")]
         // GET: Admin/SupplyRequests
         public async Task<IActionResult> Index()
         {
@@ -46,6 +48,7 @@ namespace CooperativeFuneralFundInc.Controllers
             return View(supplyRequest);
         }
 
+        [Authorize(Roles = "Admin, User")]
         // GET: Admin/SupplyRequests/Create
         public IActionResult Create()
         {
@@ -80,6 +83,7 @@ namespace CooperativeFuneralFundInc.Controllers
             return View(supplyRequest);
         }
 
+        [Authorize(Roles = "Admin, User")]
         // GET: Admin/SupplyRequests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -143,6 +147,7 @@ namespace CooperativeFuneralFundInc.Controllers
             return View(supplyRequest);
         }
 
+        [Authorize(Roles = "Admin, User")]
         // GET: Admin/SupplyRequests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

@@ -256,6 +256,8 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             string username = "Admin";
             string password = "Sesame";
             string roleName = "Admin";
+            string roleName2 = "User";
+            string roleName3 = "Visitor";
             string fName = "Admin";
             string lName = "Admin";
             string numberType = "Other";

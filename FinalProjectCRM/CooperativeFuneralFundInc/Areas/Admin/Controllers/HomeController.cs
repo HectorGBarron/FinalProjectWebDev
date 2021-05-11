@@ -12,7 +12,7 @@ using CooperativeFuneralFundInc.Areas.Admin.Models;
 namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
 
-    [Authorize(Roles = "Admin, Members")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class HomeController : Controller
     {

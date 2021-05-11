@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -18,6 +19,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements
+        [Authorize(Roles = "Admin, User, Visitor")]
         public async Task<IActionResult> Index()
         {
             var cFFDataContext = _context.TaskManagements;
@@ -44,6 +46,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements/Create
+        [Authorize(Roles = "Admin, User")]
         public IActionResult Create()
         {
             ViewData["Owner"] = new SelectList(_context.OwnerNames, "Owner", "OwnerName");
@@ -77,6 +80,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements/Edit/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -138,6 +142,7 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements/Delete/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
