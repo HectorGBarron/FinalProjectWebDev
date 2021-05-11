@@ -45,6 +45,11 @@ namespace CooperativeFuneralFundInc.Controllers
                 return NotFound();
             }
 
+
+            IQueryable<ListTaskSupplyR> query = _context.ListTaskSupplyR;
+            var selectedNotes = query.Where(t => t.SupplyRequest.SupplyRequestId == id);
+            ViewBag.notesList = selectedNotes.ToList();
+
             return View(supplyRequest);
         }
 
@@ -103,6 +108,13 @@ namespace CooperativeFuneralFundInc.Controllers
             ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
             ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
             ViewData["RequestOrigin"] = new SelectList(_context.RequestOrigins, "RequestOriginId", "RequestOriginDescription");
+
+
+            IQueryable<ListTaskSupplyR> query = _context.ListTaskSupplyR;
+            var selectedNotes = query.Where(t => t.SupplyRequest.SupplyRequestId==id);
+            ViewBag.notesList = selectedNotes.ToList();
+
+
             return View(supplyRequest);
         }
 
