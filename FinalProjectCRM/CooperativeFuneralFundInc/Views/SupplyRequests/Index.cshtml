@@ -85,9 +85,16 @@
                 @Html.DisplayFor(modelItem => item.UpdatedTime)
             </td>
             <td>
-                <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.SupplyRequestId">Edit</a> |
-                <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.SupplyRequestId">Details</a> |
+
+                @if (User.IsInRole("Visitor"))
+                {
+                <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.SupplyRequestId">Details</a> 
+                           }
+                else {
+                <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.SupplyRequestId">Edit</a> 
+                <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.SupplyRequestId">Details</a> 
                 <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.SupplyRequestId">Delete</a>
+                  }
             </td>
         </tr>
 }
