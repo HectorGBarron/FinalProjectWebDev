@@ -7,7 +7,7 @@ namespace CooperativeFuneralFundInc.Models.DropDownMenu
 {
     public class RequestOrigin
     {
-        public int RequestOriginId { get; set; }
+        public string RequestOriginId { get; set; }
         public string RequestOriginDescription { get; set; }
 
         public static implicit operator RequestOrigin(int v)

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Members")]
     [Area("Admin")]
     public class OrderItemsController : Controller
     {
@@ -30,7 +30,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
         }
 
         // GET: Admin/OrderItems/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -90,7 +90,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderItemsID,OrderItemsName")] OrderItems orderItems)
+        public async Task<IActionResult> Edit(string id, [Bind("OrderItemsID,OrderItemsName")] OrderItems orderItems)
         {
             if (id != orderItems.OrderItemsID)
             {
@@ -121,7 +121,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
         }
 
         // GET: Admin/OrderItems/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrderItemsExists(int id)
+        private bool OrderItemsExists(string id)
         {
             return _context.OrderItems.Any(e => e.OrderItemsID == id);
         }

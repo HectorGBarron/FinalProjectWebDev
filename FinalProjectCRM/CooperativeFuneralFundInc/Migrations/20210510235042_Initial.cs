@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CooperativeFuneralFundInc.Migrations
 {
-    public partial class AddIdentityTables : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,11 +63,22 @@ namespace CooperativeFuneralFundInc.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NumberTypes",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NumberTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
-                    OrderItemsID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderItemsID = table.Column<string>(nullable: false),
                     OrderItemsName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -79,21 +90,44 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "OwnerNames",
                 columns: table => new
                 {
-                    OwnerID = table.Column<int>(nullable: false)
+                    OwnerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OwnerName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OwnerNames", x => x.OwnerID);
+                    table.PrimaryKey("PK_OwnerNames", x => x.OwnerId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Priorities",
+                columns: table => new
+                {
+                    PriorityId = table.Column<string>(nullable: false),
+                    PriorityName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Priorities", x => x.PriorityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RelatedTos",
+                columns: table => new
+                {
+                    RelatedToId = table.Column<string>(nullable: false),
+                    RelatedToName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RelatedTos", x => x.RelatedToId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "RequestOrigins",
                 columns: table => new
                 {
-                    RequestOriginId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestOriginId = table.Column<string>(nullable: false),
                     RequestOriginDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -102,29 +136,72 @@ namespace CooperativeFuneralFundInc.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Status",
+                name: "RequestTypes",
                 columns: table => new
                 {
-                    StatusID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusDescription = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Status", x => x.StatusID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SupplyRequestTypes",
-                columns: table => new
-                {
-                    RequestTypeID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestTypeId = table.Column<string>(nullable: false),
                     RequestTypeDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SupplyRequestTypes", x => x.RequestTypeID);
+                    table.PrimaryKey("PK_RequestTypes", x => x.RequestTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Statuses",
+                columns: table => new
+                {
+                    StatusId = table.Column<string>(nullable: false),
+                    StatusDescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statuses", x => x.StatusId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SupplyRequests",
+                columns: table => new
+                {
+                    SupplyRequestId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(nullable: true),
+                    StatusComments = table.Column<string>(nullable: true),
+                    OrderItems = table.Column<string>(nullable: false),
+                    SupplyRequestOrigin = table.Column<string>(nullable: false),
+                    RequestType = table.Column<string>(nullable: true),
+                    Client = table.Column<string>(nullable: false),
+                    Owner = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SupplyRequests", x => x.SupplyRequestId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskManagements",
+                columns: table => new
+                {
+                    TaskManagementId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(nullable: true),
+                    Owner = table.Column<string>(nullable: true),
+                    RelatedTo = table.Column<string>(nullable: true),
+                    RelatedToName = table.Column<string>(nullable: true),
+                    RequestType = table.Column<string>(nullable: true),
+                    Priority = table.Column<string>(nullable: true),
+                    CreateBy = table.Column<string>(nullable: true),
+                    CreatedTime = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskManagements", x => x.TaskManagementId);
                 });
 
             migrationBuilder.CreateTable(
@@ -233,128 +310,6 @@ namespace CooperativeFuneralFundInc.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "NotesSection",
-                columns: table => new
-                {
-                    NotesSectionId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RequestOriginId = table.Column<int>(nullable: false),
-                    Note = table.Column<string>(nullable: true),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    Archived = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NotesSection", x => x.NotesSectionId);
-                    table.ForeignKey(
-                        name: "FK_NotesSection_RequestOrigins_RequestOriginId",
-                        column: x => x.RequestOriginId,
-                        principalTable: "RequestOrigins",
-                        principalColumn: "RequestOriginId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SupplyRequests",
-                columns: table => new
-                {
-                    SupplyRequestId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusID = table.Column<int>(nullable: false),
-                    StatusComments = table.Column<string>(nullable: true),
-                    OrderItemsID = table.Column<int>(nullable: false),
-                    RequestOriginId = table.Column<int>(nullable: false),
-                    RequestTypeID = table.Column<int>(nullable: false),
-                    ClientSupplierID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    CreateTime = table.Column<string>(nullable: true),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    UpdatedTime = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SupplyRequests", x => x.SupplyRequestId);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_ClientSuppliers_ClientSupplierID",
-                        column: x => x.ClientSupplierID,
-                        principalTable: "ClientSuppliers",
-                        principalColumn: "ClientSupplierID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_OrderItems_OrderItemsID",
-                        column: x => x.OrderItemsID,
-                        principalTable: "OrderItems",
-                        principalColumn: "OrderItemsID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_OwnerNames_OwnerID",
-                        column: x => x.OwnerID,
-                        principalTable: "OwnerNames",
-                        principalColumn: "OwnerID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_RequestOrigins_RequestOriginId",
-                        column: x => x.RequestOriginId,
-                        principalTable: "RequestOrigins",
-                        principalColumn: "RequestOriginId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_SupplyRequestTypes_RequestTypeID",
-                        column: x => x.RequestTypeID,
-                        principalTable: "SupplyRequestTypes",
-                        principalColumn: "RequestTypeID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SupplyRequests_Status_StatusID",
-                        column: x => x.StatusID,
-                        principalTable: "Status",
-                        principalColumn: "StatusID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TaskManagements",
-                columns: table => new
-                {
-                    TaskManagementId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false),
-                    RelatedTo = table.Column<string>(nullable: true),
-                    RelatedToName = table.Column<string>(nullable: true),
-                    RequestTypeID = table.Column<int>(nullable: false),
-                    Priority = table.Column<int>(nullable: false),
-                    CreateBy = table.Column<string>(nullable: true),
-                    CreatedTime = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    UpdatedTime = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TaskManagements", x => x.TaskManagementId);
-                    table.ForeignKey(
-                        name: "FK_TaskManagements_OwnerNames_OwnerID",
-                        column: x => x.OwnerID,
-                        principalTable: "OwnerNames",
-                        principalColumn: "OwnerID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TaskManagements_SupplyRequestTypes_RequestTypeID",
-                        column: x => x.RequestTypeID,
-                        principalTable: "SupplyRequestTypes",
-                        principalColumn: "RequestTypeID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TaskManagements_Status_StatusID",
-                        column: x => x.StatusID,
-                        principalTable: "Status",
-                        principalColumn: "StatusID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "ClientSuppliers",
                 columns: new[] { "ClientSupplierID", "ClientSupplierName" },
@@ -365,77 +320,90 @@ namespace CooperativeFuneralFundInc.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "NumberTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { "Mobile", "Mobile" },
+                    { "Home", "Home" },
+                    { "Work", "work" },
+                    { "Other", "Other" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "OrderItems",
                 columns: new[] { "OrderItemsID", "OrderItemsName" },
                 values: new object[,]
                 {
-                    { 11, "Investment election form" },
-                    { 10, "Service and merchandise forms" },
-                    { 9, "Monthly monitors" },
-                    { 8, "Funding your funeral in advance brochure" },
-                    { 7, "Planning guides" },
-                    { 12, "Other" },
-                    { 5, "Postage paid envelopes." },
-                    { 4, "Return envelopes." },
-                    { 3, "Itemizations form" },
-                    { 2, "Account update/Claim form" },
-                    { 1, "Preneed agreement" },
-                    { 6, "Deposit tickets" }
+                    { "Postage paid envelopes.", "Postage paid envelopes." },
+                    { "Deposit tickets", "Deposit tickets" },
+                    { "Planning guides", "Planning guides" },
+                    { "Funding your funeral in advance brochure", "Funding your funeral in advance brochure" },
+                    { "Monthly monitors", "Monthly monitors" },
+                    { "Service and merchandise forms", "Service and merchandise forms" },
+                    { "Investment election form", "Investment election form" },
+                    { "Other", "Other" },
+                    { "Preneed agreement", "Preneed agreement" },
+                    { "Account update/Claim form", "Account update/Claim form" },
+                    { "Itemizations form", "Itemizations form" },
+                    { "Return envelopes.", "Return envelopes." }
                 });
 
             migrationBuilder.InsertData(
-                table: "OwnerNames",
-                columns: new[] { "OwnerID", "OwnerName" },
-                values: new object[] { 1, "Person 1" });
+                table: "Priorities",
+                columns: new[] { "PriorityId", "PriorityName" },
+                values: new object[,]
+                {
+                    { "High", "High" },
+                    { "Medium", "Medium" },
+                    { "Low", "Low" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RelatedTos",
+                columns: new[] { "RelatedToId", "RelatedToName" },
+                values: new object[,]
+                {
+                    { "Lead", "Lead" },
+                    { "In-house", "In-house" },
+                    { "Customer", "Customer" },
+                    { "Potential customer", "Potential customer" },
+                    { "Other", "Other" }
+                });
 
             migrationBuilder.InsertData(
                 table: "RequestOrigins",
                 columns: new[] { "RequestOriginId", "RequestOriginDescription" },
                 values: new object[,]
                 {
-                    { 6, "Other" },
-                    { 5, "Regional manager" },
-                    { 4, "Mail" },
-                    { 3, "Email" },
-                    { 1, "Phone" },
-                    { 2, "Fax" }
+                    { "Other", "Other" },
+                    { "Phone", "Phone" },
+                    { "Mail", "Mail" },
+                    { "Email", "Email" },
+                    { "Fax", "Fax" },
+                    { "Regional Manager", "Regional manager" }
                 });
 
             migrationBuilder.InsertData(
-                table: "Status",
-                columns: new[] { "StatusID", "StatusDescription" },
+                table: "RequestTypes",
+                columns: new[] { "RequestTypeId", "RequestTypeDescription" },
                 values: new object[,]
                 {
-                    { 4, "On hold" },
-                    { 1, "New" },
-                    { 2, "In-Process" },
-                    { 3, "Completed" },
-                    { 5, "Cancelled" }
+                    { "Vendor", "Vendor" },
+                    { "Client", "Client" }
                 });
 
             migrationBuilder.InsertData(
-                table: "SupplyRequestTypes",
-                columns: new[] { "RequestTypeID", "RequestTypeDescription" },
+                table: "Statuses",
+                columns: new[] { "StatusId", "StatusDescription" },
                 values: new object[,]
                 {
-                    { 1, "Vendor" },
-                    { 2, "Client" }
+                    { "In-Process", "In-Process" },
+                    { "Completed", "Completed" },
+                    { "On hold", "On hold" },
+                    { "Cancelled", "Cancelled" },
+                    { "New", "New" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "NotesSection",
-                columns: new[] { "NotesSectionId", "Archived", "CreatedBy", "CreatedDate", "Note", "RequestOriginId" },
-                values: new object[] { 1, false, "Developer", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test note", 1 });
-
-            migrationBuilder.InsertData(
-                table: "SupplyRequests",
-                columns: new[] { "SupplyRequestId", "ClientSupplierID", "CreateTime", "CreatedBy", "OrderItemsID", "OwnerID", "RequestOriginId", "RequestTypeID", "StatusComments", "StatusID", "UpdatedBy", "UpdatedTime" },
-                values: new object[] { 1, 1, "Test", "Test", 1, 1, 1, 1, "test", 1, "Test", null });
-
-            migrationBuilder.InsertData(
-                table: "TaskManagements",
-                columns: new[] { "TaskManagementId", "CreateBy", "CreatedTime", "OwnerID", "Priority", "RelatedTo", "RelatedToName", "RequestTypeID", "StatusID", "UpdatedBy", "UpdatedTime" },
-                values: new object[] { 1, "Test", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, "Test", "Test", 1, 1, "Test", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -475,56 +443,6 @@ namespace CooperativeFuneralFundInc.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NotesSection_RequestOriginId",
-                table: "NotesSection",
-                column: "RequestOriginId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_ClientSupplierID",
-                table: "SupplyRequests",
-                column: "ClientSupplierID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_OrderItemsID",
-                table: "SupplyRequests",
-                column: "OrderItemsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_OwnerID",
-                table: "SupplyRequests",
-                column: "OwnerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_RequestOriginId",
-                table: "SupplyRequests",
-                column: "RequestOriginId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_RequestTypeID",
-                table: "SupplyRequests",
-                column: "RequestTypeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplyRequests_StatusID",
-                table: "SupplyRequests",
-                column: "StatusID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TaskManagements_OwnerID",
-                table: "TaskManagements",
-                column: "OwnerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TaskManagements_RequestTypeID",
-                table: "TaskManagements",
-                column: "RequestTypeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TaskManagements_StatusID",
-                table: "TaskManagements",
-                column: "StatusID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -545,7 +463,31 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "NotesSection");
+                name: "ClientSuppliers");
+
+            migrationBuilder.DropTable(
+                name: "NumberTypes");
+
+            migrationBuilder.DropTable(
+                name: "OrderItems");
+
+            migrationBuilder.DropTable(
+                name: "OwnerNames");
+
+            migrationBuilder.DropTable(
+                name: "Priorities");
+
+            migrationBuilder.DropTable(
+                name: "RelatedTos");
+
+            migrationBuilder.DropTable(
+                name: "RequestOrigins");
+
+            migrationBuilder.DropTable(
+                name: "RequestTypes");
+
+            migrationBuilder.DropTable(
+                name: "Statuses");
 
             migrationBuilder.DropTable(
                 name: "SupplyRequests");
@@ -558,24 +500,6 @@ namespace CooperativeFuneralFundInc.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "ClientSuppliers");
-
-            migrationBuilder.DropTable(
-                name: "OrderItems");
-
-            migrationBuilder.DropTable(
-                name: "RequestOrigins");
-
-            migrationBuilder.DropTable(
-                name: "OwnerNames");
-
-            migrationBuilder.DropTable(
-                name: "SupplyRequestTypes");
-
-            migrationBuilder.DropTable(
-                name: "Status");
         }
     }
 }

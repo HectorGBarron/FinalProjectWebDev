@@ -455,7 +455,6 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Details.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Edit.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Index.cshtml.g.cs
-C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
@@ -483,7 +482,15 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.dll
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.pdb
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.genruntimeconfig.cache
-C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\User.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Create.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Delete.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Details.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Edit.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Index.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\libman.json
@@ -612,7 +619,6 @@ C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\Cooperat
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.AssemblyInfoInputs.cache
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.AssemblyInfo.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csproj.CoreCompileInputs.cache
@@ -625,6 +631,8 @@ C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\Cooperat
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.TagHelpers.input.cache
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.TagHelpers.output.cache
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.RazorCoreGenerate.cache
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Create.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Delete.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\OrderItems\Details.cshtml.g.cs
@@ -635,7 +643,13 @@ C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\Cooperat
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Details.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Edit.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Owners\Index.cshtml.g.cs
-C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Create.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Delete.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Details.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Edit.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SupplyRequests\Index.cshtml.g.cs
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\User.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
@@ -663,3 +677,10 @@ C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\Cooperat
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.dll
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.pdb
 C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.genruntimeconfig.cache
+C:\Users\Banso\OneDrive\Desktop\Pull\FinalProjectWebDev\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Create.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Delete.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Details.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Edit.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Index.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
-using CooperativeFuneralFundInc.Models.DropDownMenu;
-using CooperativeFuneralFundInc.Models.UserManagement;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -22,9 +19,10 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements
+        [Authorize(Roles = "Admin, User, Visitor")]
         public async Task<IActionResult> Index()
         {
-            var cFFDataContext = _context.TaskManagements.Include(t => t.OwnerName).Include(t => t.RequestTypeDescription).Include(t => t.StatusName);
+            var cFFDataContext = _context.TaskManagements;
             return View(await cFFDataContext.ToListAsync());
         }
 
@@ -37,9 +35,7 @@ namespace CooperativeFuneralFundInc.Controllers
             }
 
             var taskManagement = await _context.TaskManagements
-                .Include(t => t.OwnerName)
-                .Include(t => t.RequestTypeDescription)
-                .Include(t => t.StatusName)
+              
                 .FirstOrDefaultAsync(m => m.TaskManagementId == id);
             if (taskManagement == null)
             {
@@ -50,11 +46,15 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements/Create
+        [Authorize(Roles = "Admin, User")]
         public IActionResult Create()
         {
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID");
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID");
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID");
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "Owner", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
+            ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId","RelatedToName");
+            
             return View();
         }
 
@@ -63,7 +63,7 @@ namespace CooperativeFuneralFundInc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TaskManagementId,StatusID,OwnerID,RelatedTo,RelatedToName,RequestTypeID,Priority,CreateBy,CreatedTime,UpdatedBy,UpdatedTime")] TaskManagement taskManagement)
+        public async Task<IActionResult> Create([Bind("TaskManagementId,Status,Owner,RelatedTo,RelatedToName,RequestType,Priority,CreateBy,CreatedTime,UpdatedBy,UpdatedTime")] TaskManagement taskManagement)
         {
             if (ModelState.IsValid)
             {
@@ -71,13 +71,16 @@ namespace CooperativeFuneralFundInc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", taskManagement.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", taskManagement.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", taskManagement.StatusID);
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "Owner", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
+            ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
             return View(taskManagement);
         }
 
         // GET: TaskManagements/Edit/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,9 +93,11 @@ namespace CooperativeFuneralFundInc.Controllers
             {
                 return NotFound();
             }
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", taskManagement.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", taskManagement.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", taskManagement.StatusID);
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "Owner", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
+            ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
             return View(taskManagement);
         }
 
@@ -101,7 +106,7 @@ namespace CooperativeFuneralFundInc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TaskManagementId,StatusID,OwnerID,RelatedTo,RelatedToName,RequestTypeID,Priority,CreateBy,CreatedTime,UpdatedBy,UpdatedTime")] TaskManagement taskManagement)
+        public async Task<IActionResult> Edit(int id, [Bind("TaskManagementId,Status,Owner,RelatedTo,RelatedToName,RequestType,Priority,CreateBy,CreatedTime,UpdatedBy,UpdatedTime")] TaskManagement taskManagement)
         {
             if (id != taskManagement.TaskManagementId)
             {
@@ -128,13 +133,16 @@ namespace CooperativeFuneralFundInc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OwnerID"] = new SelectList(_context.OwnerNames, "OwnerID", "OwnerID", taskManagement.OwnerID);
-            ViewData["RequestTypeID"] = new SelectList(_context.SupplyRequestTypes, "RequestTypeID", "RequestTypeID", taskManagement.RequestTypeID);
-            ViewData["StatusID"] = new SelectList(_context.Set<Status>(), "StatusID", "StatusID", taskManagement.StatusID);
+            ViewData["Owner"] = new SelectList(_context.OwnerNames, "Owner", "OwnerName");
+            ViewData["RequestType"] = new SelectList(_context.RequestTypes, "RequestTypeId", "RequestTypeDescription");
+            ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
+            ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
+            ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
             return View(taskManagement);
         }
 
         // GET: TaskManagements/Delete/5
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,9 +151,7 @@ namespace CooperativeFuneralFundInc.Controllers
             }
 
             var taskManagement = await _context.TaskManagements
-                .Include(t => t.OwnerName)
-                .Include(t => t.RequestTypeDescription)
-                .Include(t => t.StatusName)
+       
                 .FirstOrDefaultAsync(m => m.TaskManagementId == id);
             if (taskManagement == null)
             {

@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.Status)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status.StatusID)
+            @Html.DisplayFor(model => model.Status)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.StatusComments)
@@ -26,31 +26,31 @@
             @Html.DisplayNameFor(model => model.OrderItems)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderItems.OrderItemsID)
+            @Html.DisplayFor(model => model.OrderItems)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.SupplyRequestOrigin)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SupplyRequestOrigin.RequestOriginId)
+            @Html.DisplayFor(model => model.SupplyRequestOrigin)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RequestTypeDescription)
+            @Html.DisplayNameFor(model => model.RequestType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RequestTypeDescription.RequestTypeID)
+            @Html.DisplayFor(model => model.RequestType)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Client)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.ClientSupplierID)
+            @Html.DisplayFor(model => model.Client)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Owner)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Owner.OwnerID)
+            @Html.DisplayFor(model => model.Owner)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedBy)
@@ -79,6 +79,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.SupplyRequestId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Visitor"))
+    {
+        <a asp-action="Index">Back to List</a>
+    }
+    else
+    {
+        <a asp-action="Edit" asp-route-id="@Model.SupplyRequestId">Edit</a> 
+        <a asp - action = "Index" > Back to List</a >
+    }
+
 </div>
