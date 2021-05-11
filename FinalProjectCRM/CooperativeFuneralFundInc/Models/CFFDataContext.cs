@@ -32,11 +32,15 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
         public DbSet<Client> Clients { get; set; }
 
-
+        public DbSet<ListTaskNotes> ListTaskNotes { get; set; }
         public DbSet<Status> Statuses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ListTaskNotes>().HasData(
+                new ListTaskNotes {ListTaskNotesId=1,CreatedBy="" })
+                ;
 
             modelBuilder.Entity<Client>().HasData(
                 new Client { ClientID=1,ClientName="",Documents="",Branding="",ClientContacts=""}

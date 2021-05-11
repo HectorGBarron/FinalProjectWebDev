@@ -1,4 +1,4 @@
-﻿@model CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement
+﻿    @model CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement
 
 @{
     ViewData["Title"] = "Details";
@@ -72,6 +72,49 @@
         </dd>
     </dl>
 </div>
+
+<table>
+    <thead>
+        <tr>
+            <th width="40%">
+                Note
+            </th>
+            <th width="30%">
+                Created By
+            </th>
+            <th width="20%">
+                Created Date
+            </th>
+            <th>
+                Archived
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @using CooperativeFuneralFundInc.Models.TasksManagement
+        @using CooperativeFuneralFundInc.Controllers
+        @foreach(ListTaskNotes note in ViewBag.notesList)
+            {
+                <tr>
+                    <td>
+                        @note.Note
+                    </td>
+                    <td>
+                        @note.CreatedBy
+                    </td>
+                    <td>
+                        @note.CreatedDate
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(model=> @note.Archived)
+                        
+                    </td>
+                </tr>
+
+            }
+    </tbody>
+</table>
+
 <div>
     @if (User.IsInRole("Visitor"))
     {

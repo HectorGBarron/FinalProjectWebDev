@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210511151914_initial")]
-    partial class initial
+    [Migration("20210511221108_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -400,6 +400,44 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.ToTable("SupplyRequests");
                 });
 
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.ListTaskNotes", b =>
+                {
+                    b.Property<int>("ListTaskNotesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Archived")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TaskManagementId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListTaskNotesId");
+
+                    b.HasIndex("TaskManagementId");
+
+                    b.ToTable("ListTaskNotes");
+
+                    b.HasData(
+                        new
+                        {
+                            ListTaskNotesId = 1,
+                            Archived = false,
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", b =>
                 {
                     b.Property<int>("TaskManagementId")
@@ -683,6 +721,13 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.ListTaskNotes", b =>
+                {
+                    b.HasOne("CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement", "TaskManagement")
+                        .WithMany("TaskNotes")
+                        .HasForeignKey("TaskManagementId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

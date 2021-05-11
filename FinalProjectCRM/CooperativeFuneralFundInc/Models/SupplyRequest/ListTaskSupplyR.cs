@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
-namespace CooperativeFuneralFundInc.Models.DropDownMenu
+namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
-    public class TaskNotes
+    public class ListTaskSupplyR
     {
-        public int NotesSectionId { get; set; }
+        public int ListSupplyRId { get; set; }
 
-        //public int RequestOriginId { get; set; }
-        public RequestOrigin RequestOriginDescription { get; set; }
+        public SupplyRequest SupplyRequest { get; set; }
 
         public string Note { get; set; }
 

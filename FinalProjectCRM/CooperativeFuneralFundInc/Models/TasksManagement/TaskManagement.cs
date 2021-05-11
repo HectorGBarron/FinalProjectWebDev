@@ -28,5 +28,7 @@ namespace CooperativeFuneralFundInc.Models.TasksManagement
         public DateTime CreatedTime { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedTime { get; set; }
+
+        public ICollection<ListTaskNotes> TaskNotes { get; set; }
     }
 }

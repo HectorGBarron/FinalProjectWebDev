@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CooperativeFuneralFundInc.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -326,6 +326,29 @@ namespace CooperativeFuneralFundInc.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ListTaskNotes",
+                columns: table => new
+                {
+                    ListTaskNotesId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TaskManagementId = table.Column<int>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    Archived = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListTaskNotes", x => x.ListTaskNotesId);
+                    table.ForeignKey(
+                        name: "FK_ListTaskNotes_TaskManagements_TaskManagementId",
+                        column: x => x.TaskManagementId,
+                        principalTable: "TaskManagements",
+                        principalColumn: "TaskManagementId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "ClientSuppliers",
                 columns: new[] { "ClientSupplierID", "ClientSupplierName" },
@@ -339,6 +362,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 table: "Clients",
                 columns: new[] { "ClientID", "Branding", "ClientContacts", "ClientName", "Documents" },
                 values: new object[] { 1, "", "", "", "" });
+
+            migrationBuilder.InsertData(
+                table: "ListTaskNotes",
+                columns: new[] { "ListTaskNotesId", "Archived", "CreatedBy", "CreatedDate", "Note", "TaskManagementId" },
+                values: new object[] { 1, false, "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null });
 
             migrationBuilder.InsertData(
                 table: "NumberTypes",
@@ -356,7 +384,6 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "OrderItemsID", "OrderItemsName" },
                 values: new object[,]
                 {
-                    { "Postage paid envelopes.", "Postage paid envelopes." },
                     { "Deposit tickets", "Deposit tickets" },
                     { "Planning guides", "Planning guides" },
                     { "Funding your funeral in advance brochure", "Funding your funeral in advance brochure" },
@@ -365,9 +392,10 @@ namespace CooperativeFuneralFundInc.Migrations
                     { "Investment election form", "Investment election form" },
                     { "Other", "Other" },
                     { "Preneed agreement", "Preneed agreement" },
-                    { "Itemizations form", "Itemizations form" },
                     { "Account update/Claim form", "Account update/Claim form" },
-                    { "Return envelopes.", "Return envelopes." }
+                    { "Return envelopes.", "Return envelopes." },
+                    { "Itemizations form", "Itemizations form" },
+                    { "Postage paid envelopes.", "Postage paid envelopes." }
                 });
 
             migrationBuilder.InsertData(
@@ -385,11 +413,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RelatedToId", "RelatedToName" },
                 values: new object[,]
                 {
-                    { "Potential customer", "Potential customer" },
-                    { "In-house", "In-house" },
-                    { "Customer", "Customer" },
                     { "Lead", "Lead" },
-                    { "Other", "Other" }
+                    { "Other", "Other" },
+                    { "Customer", "Customer" },
+                    { "Potential customer", "Potential customer" },
+                    { "In-house", "In-house" }
                 });
 
             migrationBuilder.InsertData(
@@ -397,12 +425,12 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RequestOriginId", "RequestOriginDescription" },
                 values: new object[,]
                 {
-                    { "Other", "Other" },
                     { "Phone", "Phone" },
-                    { "Mail", "Mail" },
-                    { "Email", "Email" },
                     { "Fax", "Fax" },
-                    { "Regional Manager", "Regional manager" }
+                    { "Other", "Other" },
+                    { "Regional Manager", "Regional manager" },
+                    { "Mail", "Mail" },
+                    { "Email", "Email" }
                 });
 
             migrationBuilder.InsertData(
@@ -410,8 +438,8 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RequestTypeId", "RequestTypeDescription" },
                 values: new object[,]
                 {
-                    { "Vendor", "Vendor" },
-                    { "Client", "Client" }
+                    { "Client", "Client" },
+                    { "Vendor", "Vendor" }
                 });
 
             migrationBuilder.InsertData(
@@ -419,11 +447,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "StatusId", "StatusDescription" },
                 values: new object[,]
                 {
-                    { "In-Process", "In-Process" },
+                    { "New", "New" },
                     { "Completed", "Completed" },
                     { "On hold", "On hold" },
                     { "Cancelled", "Cancelled" },
-                    { "New", "New" }
+                    { "In-Process", "In-Process" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -464,6 +492,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListTaskNotes_TaskManagementId",
+                table: "ListTaskNotes",
+                column: "TaskManagementId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -488,6 +521,9 @@ namespace CooperativeFuneralFundInc.Migrations
 
             migrationBuilder.DropTable(
                 name: "ClientSuppliers");
+
+            migrationBuilder.DropTable(
+                name: "ListTaskNotes");
 
             migrationBuilder.DropTable(
                 name: "NumberTypes");
@@ -517,13 +553,13 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "SupplyRequests");
 
             migrationBuilder.DropTable(
-                name: "TaskManagements");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "TaskManagements");
         }
     }
 }

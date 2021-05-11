@@ -42,6 +42,9 @@ namespace CooperativeFuneralFundInc.Controllers
                 return NotFound();
             }
 
+            IQueryable<ListTaskNotes> query = _context.ListTaskNotes;
+            var selectedNotes = query.Where(t => t.TaskManagement.TaskManagementId == id);
+            ViewBag.notesList = selectedNotes.ToList();
             return View(taskManagement);
         }
 
@@ -98,6 +101,9 @@ namespace CooperativeFuneralFundInc.Controllers
             ViewData["Status"] = new SelectList(_context.Statuses, "StatusId", "StatusDescription");
             ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
             ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
+
+
+
             return View(taskManagement);
         }
 
