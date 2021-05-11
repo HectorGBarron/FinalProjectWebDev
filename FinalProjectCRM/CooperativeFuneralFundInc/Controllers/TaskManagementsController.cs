@@ -103,6 +103,10 @@ namespace CooperativeFuneralFundInc.Controllers
             ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
 
 
+            IQueryable<ListTaskNotes> query = _context.ListTaskNotes;
+            var selectedNotes = query.Where(t => t.TaskManagement.TaskManagementId == id);
+            ViewBag.notesList = selectedNotes.ToList();
+
 
             return View(taskManagement);
         }

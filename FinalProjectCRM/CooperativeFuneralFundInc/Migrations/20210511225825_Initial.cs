@@ -57,8 +57,7 @@ namespace CooperativeFuneralFundInc.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientName = table.Column<string>(nullable: true),
                     Documents = table.Column<string>(nullable: true),
-                    Branding = table.Column<string>(nullable: true),
-                    ClientContacts = table.Column<string>(nullable: true)
+                    Branding = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -327,6 +326,52 @@ namespace CooperativeFuneralFundInc.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ListClientContacts",
+                columns: table => new
+                {
+                    ListClientContactsID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    fName = table.Column<string>(nullable: true),
+                    lName = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    phoneNumber = table.Column<string>(nullable: true),
+                    ClientID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListClientContacts", x => x.ListClientContactsID);
+                    table.ForeignKey(
+                        name: "FK_ListClientContacts_Clients_ClientID",
+                        column: x => x.ClientID,
+                        principalTable: "Clients",
+                        principalColumn: "ClientID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListTaskSupplyR",
+                columns: table => new
+                {
+                    ListTaskSupplyRId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SupplyRequestId = table.Column<int>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    Archived = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListTaskSupplyR", x => x.ListTaskSupplyRId);
+                    table.ForeignKey(
+                        name: "FK_ListTaskSupplyR_SupplyRequests_SupplyRequestId",
+                        column: x => x.SupplyRequestId,
+                        principalTable: "SupplyRequests",
+                        principalColumn: "SupplyRequestId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ListTaskNotes",
                 columns: table => new
                 {
@@ -360,13 +405,23 @@ namespace CooperativeFuneralFundInc.Migrations
 
             migrationBuilder.InsertData(
                 table: "Clients",
-                columns: new[] { "ClientID", "Branding", "ClientContacts", "ClientName", "Documents" },
-                values: new object[] { 1, "", "", "", "" });
+                columns: new[] { "ClientID", "Branding", "ClientName", "Documents" },
+                values: new object[] { 1, "", "", "" });
+
+            migrationBuilder.InsertData(
+                table: "ListClientContacts",
+                columns: new[] { "ListClientContactsID", "ClientID", "email", "fName", "lName", "phoneNumber" },
+                values: new object[] { 1, null, null, "", "", null });
 
             migrationBuilder.InsertData(
                 table: "ListTaskNotes",
                 columns: new[] { "ListTaskNotesId", "Archived", "CreatedBy", "CreatedDate", "Note", "TaskManagementId" },
                 values: new object[] { 1, false, "", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null });
+
+            migrationBuilder.InsertData(
+                table: "ListTaskSupplyR",
+                columns: new[] { "ListTaskSupplyRId", "Archived", "CreatedBy", "CreatedDate", "Note", "SupplyRequestId" },
+                values: new object[] { 1, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "", null });
 
             migrationBuilder.InsertData(
                 table: "NumberTypes",
@@ -384,7 +439,6 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "OrderItemsID", "OrderItemsName" },
                 values: new object[,]
                 {
-                    { "Deposit tickets", "Deposit tickets" },
                     { "Planning guides", "Planning guides" },
                     { "Funding your funeral in advance brochure", "Funding your funeral in advance brochure" },
                     { "Monthly monitors", "Monthly monitors" },
@@ -393,9 +447,10 @@ namespace CooperativeFuneralFundInc.Migrations
                     { "Other", "Other" },
                     { "Preneed agreement", "Preneed agreement" },
                     { "Account update/Claim form", "Account update/Claim form" },
-                    { "Return envelopes.", "Return envelopes." },
+                    { "Postage paid envelopes.", "Postage paid envelopes." },
                     { "Itemizations form", "Itemizations form" },
-                    { "Postage paid envelopes.", "Postage paid envelopes." }
+                    { "Return envelopes.", "Return envelopes." },
+                    { "Deposit tickets", "Deposit tickets" }
                 });
 
             migrationBuilder.InsertData(
@@ -414,10 +469,10 @@ namespace CooperativeFuneralFundInc.Migrations
                 values: new object[,]
                 {
                     { "Lead", "Lead" },
-                    { "Other", "Other" },
                     { "Customer", "Customer" },
                     { "Potential customer", "Potential customer" },
-                    { "In-house", "In-house" }
+                    { "In-house", "In-house" },
+                    { "Other", "Other" }
                 });
 
             migrationBuilder.InsertData(
@@ -427,10 +482,10 @@ namespace CooperativeFuneralFundInc.Migrations
                 {
                     { "Phone", "Phone" },
                     { "Fax", "Fax" },
+                    { "Email", "Email" },
                     { "Other", "Other" },
                     { "Regional Manager", "Regional manager" },
-                    { "Mail", "Mail" },
-                    { "Email", "Email" }
+                    { "Mail", "Mail" }
                 });
 
             migrationBuilder.InsertData(
@@ -447,11 +502,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "StatusId", "StatusDescription" },
                 values: new object[,]
                 {
-                    { "New", "New" },
-                    { "Completed", "Completed" },
+                    { "In-Process", "In-Process" },
                     { "On hold", "On hold" },
                     { "Cancelled", "Cancelled" },
-                    { "In-Process", "In-Process" }
+                    { "New", "New" },
+                    { "Completed", "Completed" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -494,9 +549,19 @@ namespace CooperativeFuneralFundInc.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ListClientContacts_ClientID",
+                table: "ListClientContacts",
+                column: "ClientID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ListTaskNotes_TaskManagementId",
                 table: "ListTaskNotes",
                 column: "TaskManagementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListTaskSupplyR_SupplyRequestId",
+                table: "ListTaskSupplyR",
+                column: "SupplyRequestId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -517,13 +582,16 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Clients");
-
-            migrationBuilder.DropTable(
                 name: "ClientSuppliers");
 
             migrationBuilder.DropTable(
+                name: "ListClientContacts");
+
+            migrationBuilder.DropTable(
                 name: "ListTaskNotes");
+
+            migrationBuilder.DropTable(
+                name: "ListTaskSupplyR");
 
             migrationBuilder.DropTable(
                 name: "NumberTypes");
@@ -550,16 +618,19 @@ namespace CooperativeFuneralFundInc.Migrations
                 name: "Statuses");
 
             migrationBuilder.DropTable(
-                name: "SupplyRequests");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Clients");
+
+            migrationBuilder.DropTable(
                 name: "TaskManagements");
+
+            migrationBuilder.DropTable(
+                name: "SupplyRequests");
         }
     }
 }

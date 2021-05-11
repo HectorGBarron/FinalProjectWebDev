@@ -34,16 +34,29 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
         public DbSet<ListTaskNotes> ListTaskNotes { get; set; }
         public DbSet<Status> Statuses { get; set; }
+
+        public DbSet<ListClientContacts> ListClientContacts { get; set; }
+
+        public DbSet<ListTaskSupplyR> ListTaskSupplyR { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ListClientContacts>().HasData(
+                new ListClientContacts { ListClientContactsID = 1, fName = "", lName = "" }
+                );
+            modelBuilder.Entity<ListTaskSupplyR>().HasData(
+                new ListTaskSupplyR { ListTaskSupplyRId = 1, Note = "" }
+                );
 
             modelBuilder.Entity<ListTaskNotes>().HasData(
                 new ListTaskNotes {ListTaskNotesId=1,CreatedBy="" })
                 ;
 
             modelBuilder.Entity<Client>().HasData(
-                new Client { ClientID=1,ClientName="",Documents="",Branding="",ClientContacts=""}
+                new Client { ClientID=1,ClientName="",Documents="",Branding=""}
                 );
           /*  modelBuilder.Entity<TaskManagement>().HasData(
                 new TaskManagement

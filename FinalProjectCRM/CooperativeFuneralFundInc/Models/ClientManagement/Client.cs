@@ -12,7 +12,7 @@ namespace CooperativeFuneralFundInc.Models.ClientManagement
         public string ClientName { get; set; }
         public string Documents { get; set; }
         public string Branding { get; set; }
-        public string ClientContacts { get; set; }
+        public ICollection<ListClientContacts> ListClientContacts { get; set; }
     }
 
 }

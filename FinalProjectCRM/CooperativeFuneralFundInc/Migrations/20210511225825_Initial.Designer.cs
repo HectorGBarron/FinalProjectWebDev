@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210511221108_Initial")]
+    [Migration("20210511225825_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,9 +31,6 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.Property<string>("Branding")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClientContacts")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ClientName")
                         .HasColumnType("nvarchar(max)");
 
@@ -49,9 +46,45 @@ namespace CooperativeFuneralFundInc.Migrations
                         {
                             ClientID = 1,
                             Branding = "",
-                            ClientContacts = "",
                             ClientName = "",
                             Documents = ""
+                        });
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.ClientManagement.ListClientContacts", b =>
+                {
+                    b.Property<int>("ListClientContactsID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClientID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ListClientContactsID");
+
+                    b.HasIndex("ClientID");
+
+                    b.ToTable("ListClientContacts");
+
+                    b.HasData(
+                        new
+                        {
+                            ListClientContactsID = 1,
+                            fName = "",
+                            lName = ""
                         });
                 });
 
@@ -349,6 +382,44 @@ namespace CooperativeFuneralFundInc.Migrations
                         {
                             StatusId = "Cancelled",
                             StatusDescription = "Cancelled"
+                        });
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.SupplyRequest.ListTaskSupplyR", b =>
+                {
+                    b.Property<int>("ListTaskSupplyRId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Archived")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SupplyRequestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListTaskSupplyRId");
+
+                    b.HasIndex("SupplyRequestId");
+
+                    b.ToTable("ListTaskSupplyR");
+
+                    b.HasData(
+                        new
+                        {
+                            ListTaskSupplyRId = 1,
+                            Archived = false,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Note = ""
                         });
                 });
 
@@ -721,6 +792,20 @@ namespace CooperativeFuneralFundInc.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.ClientManagement.ListClientContacts", b =>
+                {
+                    b.HasOne("CooperativeFuneralFundInc.Models.ClientManagement.Client", "Client")
+                        .WithMany("ListClientContacts")
+                        .HasForeignKey("ClientID");
+                });
+
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.SupplyRequest.ListTaskSupplyR", b =>
+                {
+                    b.HasOne("CooperativeFuneralFundInc.Models.SupplyRequest.SupplyRequest", "SupplyRequest")
+                        .WithMany("ListTaskSupplyR")
+                        .HasForeignKey("SupplyRequestId");
                 });
 
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.TasksManagement.ListTaskNotes", b =>

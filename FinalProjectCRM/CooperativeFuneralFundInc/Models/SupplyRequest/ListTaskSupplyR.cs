@@ -7,7 +7,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
     public class ListTaskSupplyR
     {
-        public int ListSupplyRId { get; set; }
+        public int ListTaskSupplyRId { get; set; }
 
         public SupplyRequest SupplyRequest { get; set; }
 
