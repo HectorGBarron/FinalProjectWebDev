@@ -108,6 +108,9 @@
                     @Html.CheckBoxFor(model => @note.Archived)
 
                 </td>
+                <td class="invisible">
+                    @note.ListTaskNotesId
+                </td>
             </tr>
 
         }
