@@ -74,50 +74,47 @@
     </div>
 </div>
 
-
-<table>
-    <thead>
-        <tr>
-            <th width="40%">
-                Note
-            </th>
-            <th width="30%">
-                Created By
-            </th>
-            <th width="20%">
-                Created Date
-            </th>
-            <th>
-                Archived
-            </th>
-        </tr>
-    </thead>
-    <tbody>
         @using CooperativeFuneralFundInc.Models.SupplyRequest
 
         @foreach (ListTaskSupplyR note in ViewBag.notesList)
         {
-            <tr>
-                <td>
-                    @note.Note
-                </td>
-                <td>
-                    @note.CreatedBy
-                </td>
-                <td>
-                    @note.CreatedDate
-                </td>
-                <td>
-                    @Html.CheckBoxFor(model => @note.Archived)
-                </td>
-                <td class="invisible">
-                    @note.ListTaskSupplyRId
-                </td>
-            </tr>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label>
+                        Note
+                    </label>
+                    <input type="text" class="form-control" value="@note.Note" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label>
+                        Created Date
+                    </label>
+                    <input type="text" class="form-control" value="@note.CreatedDate" />
+                </div>
 
+                <div class="form-group col-md-4">
+                    <label>
+                        Created By
+                    </label>
+                    <input type="text" class="form-control" value="@note.CreatedBy" />
+                </div>
+                <div class="form-group col-md-1">
+                    <label>
+                        Archived
+                    </label>
+                    <input type="text" class="form-control" value="@note.Archived" />
+                </div>
+                <div class="invisible">
+                    @note.ListTaskSupplyRId
+                </div>
+            </div>
+
+
+        </form>
         }
-    </tbody>
-</table>
+
+
 
 
 <div>
