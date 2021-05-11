@@ -683,3 +683,4 @@ C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Proje
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Details.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Edit.cshtml.g.cs
 C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\Razor\Views\Clients\Index.cshtml.g.cs
+C:\Users\Hector\Google Drive\Software Engineering\Web Development II\Final Project\FinalProjectCRM\CooperativeFuneralFundInc\obj\Debug\netcoreapp3.1\CooperativeFuneralFundInc.csprojAssemblyReference.cache
