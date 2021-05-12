@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {}
+    "C:\\Users\\Banso\\OneDrive\\Desktop\\temPull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {
+    "C:\\Users\\Banso\\OneDrive\\Desktop\\temPull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
+        "projectUniqueName": "C:\\Users\\Banso\\OneDrive\\Desktop\\temPull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
         "projectName": "CooperativeFuneralFundInc",
-        "projectPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
+        "projectPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\temPull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\CooperativeFuneralFundInc.csproj",
         "packagesPath": "C:\\Users\\Banso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\Pull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\obj\\",
+        "outputPath": "C:\\Users\\Banso\\OneDrive\\Desktop\\temPull\\FinalProjectWebDev\\FinalProjectCRM\\CooperativeFuneralFundInc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

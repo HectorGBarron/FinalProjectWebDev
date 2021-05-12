@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CooperativeFuneralFundInc.Migrations
 {
     [DbContext(typeof(CFFDataContext))]
-    [Migration("20210512161639_Initial")]
+    [Migration("20210512215056_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
