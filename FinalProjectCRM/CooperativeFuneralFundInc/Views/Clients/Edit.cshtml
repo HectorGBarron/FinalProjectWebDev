@@ -37,49 +37,46 @@
 </div>
 
 
-<table>
-    <thead>
-        <tr>
-            <th width="40%">
-                Note
-            </th>
-            <th width="30%">
-                Created By
-            </th>
-            <th width="20%">
-                Created Date
-            </th>
-            <th>
-                Archived
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @using CooperativeFuneralFundInc.Models.ClientManagement
-        
-        @foreach (ListClientContacts note in ViewBag.notesList)
-        {
-            <tr>
-                <td>
-                    @note.fName
-                </td>
-                <td>
-                    @note.lName
-                </td>
-                <td>
-                    @note.email
-                </td>
-                <td>
-                    @note.phoneNumber
-                </td>
-                <td class="invisible" >
-                    @note.Client.ClientID
-                </td>
-            </tr>
+@using CooperativeFuneralFundInc.Models.ClientManagement
 
-        }
-    </tbody>
-</table>
+@foreach (ListClientContacts note in ViewBag.notesList)
+{
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>
+                    First Name
+                </label>
+                <input type="text" class="form-control" value="@note.fName" />
+            </div>
+            <div class="form-group col-md-3">
+                <label>
+                    Last Name
+                </label>
+                <input type="text" class="form-control" value="@note.lName" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>
+                    Email
+                </label>
+                <input type="text" class="form-control" value="@note.email" />
+            </div>
+            <div class="form-group col-md-2">
+                <label>
+                    Phone Number
+                </label>
+                <input type="text" class="form-control" value="@note.phoneNumber" />
+            </div>
+            <div class="invisible">
+                @note.Client.ClientID
+            </div>
+        </div>
+
+
+    </form>
+
+}
 
 
 <div>
