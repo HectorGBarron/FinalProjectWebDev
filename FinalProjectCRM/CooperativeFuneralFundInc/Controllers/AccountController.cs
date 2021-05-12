@@ -177,11 +177,7 @@ namespace CooperativeFuneralFundInc.Controllers
                 {
                     userName = TempData["userName"] as string;
                 }
-                if (TempData.ContainsKey("userEmail"))
-                {
-                    userEmail = TempData["userEmail"] as string;
-                }
-              //  var emailConfirm = await userManager.FindByEmailAsync(userEmail);
+               
                 var nameConfirm = await userManager.FindByNameAsync(userName);
                 if (nameConfirm != null)
                 {

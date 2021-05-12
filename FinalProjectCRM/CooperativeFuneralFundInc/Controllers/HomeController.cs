@@ -17,6 +17,13 @@ namespace CooperativeFuneralFundInc.Areas
             return View();
         }
 
+        public ActionResult Privacy()
+        {
+
+
+            return View();
+        }
+
         // GET: HomeController/Details/5
         public ActionResult Details(int id)
         {
