@@ -38,6 +38,12 @@
     </div>
 
     <div class="form-group col-md-8">
+        <label asp-for="email" class="control-label">Email Address: </label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-md-8">
         <label asp-for="phoneNumber" class="control-label">Phone Number</label>
         <input asp-for="phoneNumber" class="form-control" />
         <span asp-validation-for="phoneNumber" class="text-danger"></span>
@@ -48,6 +54,18 @@
                 asp-items="@(new SelectList(ViewBag.NumberType, "Id", "Name"))">
             <option value=""></option>
         </select>
+    </div>
+    <div class="form-group col-md-8">
+        <label asp-for="securityQuestion">Security Question:</label>
+        <select asp-for="securityQuestion" class="form-control"
+                asp-items="@(new SelectList(ViewBag.SecurityQuestion, "Id", "Name"))">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group col-md-8">
+        <label asp-for="securityAnswer" class="control-label">Answer</label>
+        <input asp-for="securityAnswer" class="form-control" />
+        <span asp-validation-for="securityAnswer" class="text-danger"></span>
     </div>
 
 

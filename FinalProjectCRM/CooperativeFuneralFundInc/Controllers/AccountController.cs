@@ -9,7 +9,7 @@ using CooperativeFuneralFundInc.Models.DropDownMenu;
 using CooperativeFuneralFundInc.Models.SupplyRequest;
 using CooperativeFuneralFundInc.Models.TasksManagement;
 using CooperativeFuneralFundInc.Models.UserManagement;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace CooperativeFuneralFundInc.Controllers
 {
@@ -19,12 +19,11 @@ namespace CooperativeFuneralFundInc.Controllers
         private SignInManager<User> signInManager;
 
         public AccountController(UserManager<User> userMngr,
-            SignInManager<User> signInMngr, CFFDataContext context )
+            SignInManager<User> signInMngr, CFFDataContext context)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _context = context;
-
 
         }
 
@@ -34,17 +33,21 @@ namespace CooperativeFuneralFundInc.Controllers
         public IActionResult Register()
         {
             ViewBag.NumberType = _context.NumberTypes.ToList();
-            
+            ViewBag.SecurityQuestion = _context.SecurityQuestions.ToList();
+
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-
+            List<String> newUserRole = new List<string>();
+            newUserRole.Add("Visitor");
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username };
+
+                var user = new User { UserName = model.Username, firstName = model.firstName, lastName = model.lastName, PhoneNumber = model.phoneNumber, numberType = model.numberType, securityQuestion = model.securityQuestion, securityAnswer = model.securityAnswer, Email = model.email, RoleNames = newUserRole };
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -55,6 +58,8 @@ namespace CooperativeFuneralFundInc.Controllers
                 }
                 else
                 {
+                    ViewBag.NumberType = _context.NumberTypes.ToList();
+                    ViewBag.SecurityQuestion = _context.SecurityQuestions.ToList();
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
@@ -120,5 +125,45 @@ namespace CooperativeFuneralFundInc.Controllers
         {
             return View("Login");
         }
+
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ForgotPassword(string username, string email, string firstname, string lastname)
+        {
+            if (ModelState.IsValid)
+            {
+                var checkedUser = _context.Users.Where(a => a.Email.Equals(email) && a.UserName.Equals(username) && a.firstName.Equals(firstname) && a.lastName.Equals(lastname)).FirstOrDefault();
+                if (checkedUser != null)
+                {
+                    ViewBag.NameOfUser = checkedUser.firstName;
+                    return View("ResetPassword", checkedUser);
+                }
+            }
+            else
+            {
+                return RedirectToAction("ForgotPassword");
+            }
+            return RedirectToAction("ForgotPassword");
+        }
+
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ResetPassword(string password)
+        {
+            return RedirectToAction("LoginIndex");
+        }
+
+
     }
 }

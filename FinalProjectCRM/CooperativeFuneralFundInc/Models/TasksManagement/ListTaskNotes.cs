@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeFuneralFundInc.Models.TasksManagement
 {
@@ -10,7 +9,7 @@ namespace CooperativeFuneralFundInc.Models.TasksManagement
     {
         public int ListTaskNotesId { get; set; }
 
-         public TaskManagement TaskManagement { get; set; }
+        public TaskManagement TaskManagement { get; set; }
 
         public string Note { get; set; }
 

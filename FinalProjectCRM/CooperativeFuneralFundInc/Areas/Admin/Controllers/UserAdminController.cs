@@ -13,11 +13,11 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin, Members")]
     [Area("Admin")]
-    public class UserController : Controller
+    public class UserAdminController : Controller
     {
         private UserManager<User> userManager;
         private RoleManager<IdentityRole> roleManager;
-        public UserController(UserManager<User> userMngr,
+        public UserAdminController(UserManager<User> userMngr,
             RoleManager<IdentityRole> roleMngr)
         {
             userManager = userMngr;
@@ -26,6 +26,7 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            
             List<User> users = new List<User>();
             foreach (User user in userManager.Users)
             {
@@ -37,13 +38,13 @@ namespace CooperativeFuneralFundInc.Areas.Admin.Controllers
                 Users = users,
                 Roles = roleManager.Roles
             };
-            return View("User",model);
+            return View("UserAdmin",model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
-            User user = await userManager.FindByIdAsync(id);
+             User user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
                 IdentityResult result = await userManager.DeleteAsync(user);

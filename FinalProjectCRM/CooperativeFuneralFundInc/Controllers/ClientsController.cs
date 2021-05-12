@@ -39,11 +39,9 @@ namespace CooperativeFuneralFundInc.Controllers
             {
                 return NotFound();
             }
-
             IQueryable<ListClientContacts> query = _context.ListClientContacts;
             var selectedNotes = query.Where(t => t.Client.ClientID == id);
             ViewBag.notesList = selectedNotes.ToList();
-
 
             return View(client);
         }
@@ -88,7 +86,6 @@ namespace CooperativeFuneralFundInc.Controllers
             var selectedNotes = query.Where(t => t.Client.ClientID == id);
             ViewBag.notesList = selectedNotes.ToList();
 
-
             return View(client);
         }
 
@@ -126,7 +123,6 @@ namespace CooperativeFuneralFundInc.Controllers
             }
             return View(client);
         }
-
         // GET: Clients/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

@@ -31,7 +31,13 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
 
         [Required]
         [Display(Name = "Last Name")]
-        public string lastName { get; set; }
+        public string lastName { get; set; }   
+        
+        [Required]
+        [Display(Name = "Email")]
+        public string email { get; set; }
+
+
 
 
         [Required]
@@ -42,6 +48,20 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
         [Required]
         [Display(Name = "Number Type")]
         public string numberType { get; set; }
+
+        [Required]
+        [Display(Name = "Security Question")]
+        public string securityQuestion { get; set; }
+
+        [Required]
+        [Display(Name = "Security Question")]
+        public string securityAnswer { get; set; }
+
+
+
+
+
+
 
 
     }

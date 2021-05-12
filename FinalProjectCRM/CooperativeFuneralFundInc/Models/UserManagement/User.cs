@@ -31,6 +31,16 @@ namespace CooperativeFuneralFundInc.Models.UserManagement
         [Required]
         [Display(Name = "Number Type")]
         public string numberType { get; set; }
+        
+        [Required]
+        [Display(Name = "Security Question")]
+        public string securityQuestion { get; set; }
+        
+        [Required]
+        [Display(Name = "Security Answer")]
+        public string securityAnswer { get; set; }
+
+        
 
     }
 }

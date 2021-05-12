@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeFuneralFundInc.Models.DropDownMenu
 {
-    public class TaskNotes
+    public class NotesSection
     {
         public int NotesSectionId { get; set; }
 

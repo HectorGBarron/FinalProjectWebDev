@@ -42,7 +42,9 @@ namespace CooperativeFuneralFundInc.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     firstName = table.Column<string>(nullable: false),
                     lastName = table.Column<string>(nullable: false),
-                    numberType = table.Column<string>(nullable: false)
+                    numberType = table.Column<string>(nullable: false),
+                    securityQuestion = table.Column<string>(nullable: false),
+                    securityAnswer = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,6 +162,18 @@ namespace CooperativeFuneralFundInc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RequestTypes", x => x.RequestTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SecurityQuestions",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SecurityQuestions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -440,17 +454,17 @@ namespace CooperativeFuneralFundInc.Migrations
                 values: new object[,]
                 {
                     { "Planning guides", "Planning guides" },
-                    { "Funding your funeral in advance brochure", "Funding your funeral in advance brochure" },
-                    { "Monthly monitors", "Monthly monitors" },
-                    { "Service and merchandise forms", "Service and merchandise forms" },
-                    { "Investment election form", "Investment election form" },
-                    { "Other", "Other" },
-                    { "Preneed agreement", "Preneed agreement" },
-                    { "Account update/Claim form", "Account update/Claim form" },
-                    { "Postage paid envelopes.", "Postage paid envelopes." },
                     { "Itemizations form", "Itemizations form" },
+                    { "Account update/Claim form", "Account update/Claim form" },
+                    { "Preneed agreement", "Preneed agreement" },
+                    { "Postage paid envelopes.", "Postage paid envelopes." },
                     { "Return envelopes.", "Return envelopes." },
-                    { "Deposit tickets", "Deposit tickets" }
+                    { "Deposit tickets", "Deposit tickets" },
+                    { "Other", "Other" },
+                    { "Investment election form", "Investment election form" },
+                    { "Service and merchandise forms", "Service and merchandise forms" },
+                    { "Monthly monitors", "Monthly monitors" },
+                    { "Funding your funeral in advance brochure", "Funding your funeral in advance brochure" }
                 });
 
             migrationBuilder.InsertData(
@@ -458,9 +472,9 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "PriorityId", "PriorityName" },
                 values: new object[,]
                 {
-                    { "High", "High" },
                     { "Medium", "Medium" },
-                    { "Low", "Low" }
+                    { "Low", "Low" },
+                    { "High", "High" }
                 });
 
             migrationBuilder.InsertData(
@@ -468,11 +482,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RelatedToId", "RelatedToName" },
                 values: new object[,]
                 {
-                    { "Lead", "Lead" },
-                    { "Customer", "Customer" },
                     { "Potential customer", "Potential customer" },
+                    { "Lead", "Lead" },
                     { "In-house", "In-house" },
-                    { "Other", "Other" }
+                    { "Other", "Other" },
+                    { "Customer", "Customer" }
                 });
 
             migrationBuilder.InsertData(
@@ -480,12 +494,12 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RequestOriginId", "RequestOriginDescription" },
                 values: new object[,]
                 {
+                    { "Other", "Other" },
                     { "Phone", "Phone" },
                     { "Fax", "Fax" },
                     { "Email", "Email" },
-                    { "Other", "Other" },
-                    { "Regional Manager", "Regional manager" },
-                    { "Mail", "Mail" }
+                    { "Mail", "Mail" },
+                    { "Regional Manager", "Regional manager" }
                 });
 
             migrationBuilder.InsertData(
@@ -493,8 +507,21 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "RequestTypeId", "RequestTypeDescription" },
                 values: new object[,]
                 {
-                    { "Client", "Client" },
-                    { "Vendor", "Vendor" }
+                    { "Vendor", "Vendor" },
+                    { "Client", "Client" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SecurityQuestions",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { "What is your maternal grandmother's maiden name?", "What is your maternal grandmother's maiden name?" },
+                    { "What was the last name of your third grade teacher?", "What was the last name of your third grade teacher?" },
+                    { "What is your oldest cousin's first and last name?", "What is your oldest cousin's first and last name?" },
+                    { "What primary school did you attend?", "What primary school did you attend?" },
+                    { "What is your grandmother's (on your mother's side) maiden name?", "What is your grandmother's (on your mother's side) maiden name?" },
+                    { "What was the first concert you attended?", "What was the first concert you attended?" }
                 });
 
             migrationBuilder.InsertData(
@@ -502,11 +529,11 @@ namespace CooperativeFuneralFundInc.Migrations
                 columns: new[] { "StatusId", "StatusDescription" },
                 values: new object[,]
                 {
-                    { "In-Process", "In-Process" },
+                    { "New", "New" },
+                    { "Completed", "Completed" },
                     { "On hold", "On hold" },
                     { "Cancelled", "Cancelled" },
-                    { "New", "New" },
-                    { "Completed", "Completed" }
+                    { "In-Process", "In-Process" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -613,6 +640,9 @@ namespace CooperativeFuneralFundInc.Migrations
 
             migrationBuilder.DropTable(
                 name: "RequestTypes");
+
+            migrationBuilder.DropTable(
+                name: "SecurityQuestions");
 
             migrationBuilder.DropTable(
                 name: "Statuses");

@@ -343,6 +343,51 @@ namespace CooperativeFuneralFundInc.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.SecurityQuestion", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SecurityQuestions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "What is your grandmother's (on your mother's side) maiden name?",
+                            Name = "What is your grandmother's (on your mother's side) maiden name?"
+                        },
+                        new
+                        {
+                            Id = "What primary school did you attend?",
+                            Name = "What primary school did you attend?"
+                        },
+                        new
+                        {
+                            Id = "What is your oldest cousin's first and last name?",
+                            Name = "What is your oldest cousin's first and last name?"
+                        },
+                        new
+                        {
+                            Id = "What was the last name of your third grade teacher?",
+                            Name = "What was the last name of your third grade teacher?"
+                        },
+                        new
+                        {
+                            Id = "What is your maternal grandmother's maiden name?",
+                            Name = "What is your maternal grandmother's maiden name?"
+                        },
+                        new
+                        {
+                            Id = "What was the first concert you attended?",
+                            Name = "What was the first concert you attended?"
+                        });
+                });
+
             modelBuilder.Entity("CooperativeFuneralFundInc.Models.DropDownMenu.Status", b =>
                 {
                     b.Property<string>("StatusId")
@@ -645,6 +690,14 @@ namespace CooperativeFuneralFundInc.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("numberType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("securityAnswer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("securityQuestion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

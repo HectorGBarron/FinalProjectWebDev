@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CooperativeFuneralFundInc.Models.SupplyRequest
 {
-    public class CFFDataContext:IdentityDbContext<User>
+    public class CFFDataContext : IdentityDbContext<User>
     {
 
         public CFFDataContext(DbContextOptions<CFFDataContext> options) : base(options) { }
@@ -23,76 +23,70 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DbSet<Owner> OwnerNames { get; set; }
         public DbSet<RequestType> RequestTypes { get; set; }
         public DbSet<RequestOrigin> RequestOrigins { get; set; }
-
         public DbSet<TaskManagement> TaskManagements { get; set; }
-
         public DbSet<PhoneNumberType> NumberTypes { get; set; }
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<RelatedTo> RelatedTos { get; set; }
-
         public DbSet<Client> Clients { get; set; }
-
         public DbSet<ListTaskNotes> ListTaskNotes { get; set; }
-        public DbSet<Status> Statuses { get; set; }
-
         public DbSet<ListClientContacts> ListClientContacts { get; set; }
-
         public DbSet<ListTaskSupplyR> ListTaskSupplyR { get; set; }
+        public DbSet<SecurityQuestion> SecurityQuestions { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<ListClientContacts>().HasData(
-                new ListClientContacts { ListClientContactsID = 1, fName = "", lName = "" }
-                );
+                          new ListClientContacts { ListClientContactsID = 1, fName = "", lName = "" }
+                          );
             modelBuilder.Entity<ListTaskSupplyR>().HasData(
                 new ListTaskSupplyR { ListTaskSupplyRId = 1, Note = "" }
                 );
 
             modelBuilder.Entity<ListTaskNotes>().HasData(
-                new ListTaskNotes {ListTaskNotesId=1,CreatedBy="" })
+                new ListTaskNotes { ListTaskNotesId = 1, CreatedBy = "" })
                 ;
 
             modelBuilder.Entity<Client>().HasData(
-                new Client { ClientID=1,ClientName="",Documents="",Branding=""}
+                new Client { ClientID = 1, ClientName = "", Documents = "", Branding = "" }
                 );
-          /*  modelBuilder.Entity<TaskManagement>().HasData(
-                new TaskManagement
-                {
-                    TaskManagementId=1,
-                    Status N = "New",
-                    Owner=1,
-                    RelatedTo="Test",
-                    RelatedToName="Test",
-                    RequestType=1,
-                    Priority=1,
-                    CreateBy="Test",
-                    UpdatedBy="Test"
-                }
-                );*/
+            /*  modelBuilder.Entity<TaskManagement>().HasData(
+                  new TaskManagement
+                  {
+                      TaskManagementId=1,
+                      Status N = "New",
+                      Owner=1,
+                      RelatedTo="Test",
+                      RelatedToName="Test",
+                      RequestType=1,
+                      Priority=1,
+                      CreateBy="Test",
+                      UpdatedBy="Test"
+                  }
+                  );*/
 
-          /*  modelBuilder.Entity<SupplyRequest>().HasData
-         (
-               new SupplyRequest
-               {
-                   SupplyRequestId=1,
-                   Status = 1,
-                   StatusComments = "test",
-                   OrderItemsID = 1,
-                   RequestOriginId = 1,
-                   RequestType = 1,
-                   ClientSupplierID = 1,
-                   Owner = 1,
-                   CreatedBy = "Test",
-                   CreateTime = DateTime.Now,
-                   UpdatedBy = "Test"
-               }
-               );*/
+            /*  modelBuilder.Entity<SupplyRequest>().HasData
+           (
+                 new SupplyRequest
+                 {
+                     SupplyRequestId=1,
+                     Status = 1,
+                     StatusComments = "test",
+                     OrderItemsID = 1,
+                     RequestOriginId = 1,
+                     RequestType = 1,
+                     ClientSupplierID = 1,
+                     Owner = 1,
+                     CreatedBy = "Test",
+                     CreateTime = DateTime.Now,
+                     UpdatedBy = "Test"
+                 }
+                 );*/
 
 
-        modelBuilder.Entity<Status>().HasData(
+            modelBuilder.Entity<Status>().HasData(
 
                new Status
                {
@@ -184,6 +178,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                         OrderItemsName = "Other"
                     }
                 );
+
             modelBuilder.Entity<RequestOrigin>().HasData(
 
                     new RequestOrigin
@@ -217,6 +212,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
                         RequestOriginDescription = "Other"
                     }
                 );
+
             modelBuilder.Entity<RequestType>().HasData(
                 new RequestType { RequestTypeId = "Vendor", RequestTypeDescription = "Vendor" },
                 new RequestType { RequestTypeId = "Client", RequestTypeDescription = "Client" }
@@ -257,6 +253,17 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
   );
 
+            modelBuilder.Entity<SecurityQuestion>().HasData(
+                new SecurityQuestion { Id = "What is your grandmother's (on your mother's side) maiden name?", Name = "What is your grandmother's (on your mother's side) maiden name?" },
+                new SecurityQuestion { Id = "What primary school did you attend?", Name = "What primary school did you attend?" },
+                new SecurityQuestion { Id = "What is your oldest cousin's first and last name?", Name = "What is your oldest cousin's first and last name?" },
+                new SecurityQuestion { Id = "What was the last name of your third grade teacher?", Name = "What was the last name of your third grade teacher?" },
+                new SecurityQuestion { Id = "What is your maternal grandmother's maiden name?", Name = "What is your maternal grandmother's maiden name?" },
+                new SecurityQuestion { Id = "What was the first concert you attended?", Name = "What was the first concert you attended?" }
+        
+          
+                );
+
         }
 
 
@@ -273,11 +280,14 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             string username = "Admin";
             string password = "Sesame";
             string roleName = "Admin";
-            string roleName2 = "User";
-            string roleName3 = "Visitor";
-            string fName = "Admin";
-            string lName = "Admin";
+            string fName = "Hector";
+            string lName = "Aaron";
             string numberType = "Other";
+            string securityQuestion = "Who created this Account";
+            string securityAnswer = "Hector";
+            string phoneNumber = "757-386-2421";
+            string email = "aaron.banson@student.fairfield.edu";
+
 
             // if role doesn't exist, create it
             if (await roleManager.FindByNameAsync(roleName) == null)
@@ -288,7 +298,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
             // if username doesn't exist, create it and add to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new User { UserName = username, firstName = fName, lastName = lName, numberType = numberType };
+                User user = new User { UserName = username, firstName = fName, lastName = lName, numberType = numberType, securityQuestion = securityQuestion, securityAnswer = securityAnswer, PhoneNumber = phoneNumber, Email = email  };
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {

@@ -42,9 +42,11 @@ namespace CooperativeFuneralFundInc.Controllers
                 return NotFound();
             }
 
+
             IQueryable<ListTaskNotes> query = _context.ListTaskNotes;
             var selectedNotes = query.Where(t => t.TaskManagement.TaskManagementId == id);
             ViewBag.notesList = selectedNotes.ToList();
+
             return View(taskManagement);
         }
 
@@ -83,7 +85,6 @@ namespace CooperativeFuneralFundInc.Controllers
         }
 
         // GET: TaskManagements/Edit/5
-        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,11 +103,9 @@ namespace CooperativeFuneralFundInc.Controllers
             ViewData["Priority"] = new SelectList(_context.Priorities, "PriorityId", "PriorityName");
             ViewData["RelatedTo"] = new SelectList(_context.RelatedTos, "RelatedToId", "RelatedToName");
 
-
             IQueryable<ListTaskNotes> query = _context.ListTaskNotes;
             var selectedNotes = query.Where(t => t.TaskManagement.TaskManagementId == id);
             ViewBag.notesList = selectedNotes.ToList();
-
 
             return View(taskManagement);
         }

@@ -70,12 +70,10 @@
     </div>
 </div>
 
-
-
-        @using CooperativeFuneralFundInc.Models.TasksManagement
-        @using CooperativeFuneralFundInc.Controllers
-        @foreach (ListTaskNotes note in ViewBag.notesList)
-        {
+@using CooperativeFuneralFundInc.Models.TasksManagement
+@using CooperativeFuneralFundInc.Controllers
+@foreach (ListTaskNotes note in ViewBag.notesList)
+{
 
     <form>
         <div class="form-row">
@@ -110,23 +108,17 @@
         </div>
 
 
-</form>
+    </form>
 
-        }
-            
-
-
-            
+}
 
 
-            
 
+<div>
 
-            <div>
+    <a asp-controller="Home" asp-action="Index">Cancel</a>
+</div>
 
-                <a asp-controller="Home" asp-action="Index">Cancel</a>
-            </div>
-
-            @section Scripts {
-                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-            }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

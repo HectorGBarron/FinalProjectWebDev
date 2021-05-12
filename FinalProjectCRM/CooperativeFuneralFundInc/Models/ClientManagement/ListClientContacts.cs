@@ -7,7 +7,7 @@ namespace CooperativeFuneralFundInc.Models.ClientManagement
 {
     public class ListClientContacts
     {
-        public int ListClientContactsID {get;set;}
+        public int ListClientContactsID { get; set; }
         public string fName { get; set; }
         public string lName { get; set; }
         public string email { get; set; }

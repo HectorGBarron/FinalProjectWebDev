@@ -75,6 +75,46 @@
     </div>
 </div>
 
+@using CooperativeFuneralFundInc.Models.SupplyRequest
+
+@foreach (ListTaskSupplyR note in ViewBag.notesList)
+{
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label>
+                    Note
+                </label>
+                <input type="text" class="form-control" value="@note.Note" />
+            </div>
+            <div class="form-group col-md-2">
+                <label>
+                    Created Date
+                </label>
+                <input type="text" class="form-control" value="@note.CreatedDate" />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>
+                    Created By
+                </label>
+                <input type="text" class="form-control" value="@note.CreatedBy" />
+            </div>
+            <div class="form-group col-md-1">
+                <label>
+                    Archived
+                </label>
+                <input type="text" class="form-control" value="@note.Archived" />
+            </div>
+            <div class="invisible">
+                @note.ListTaskSupplyRId
+            </div>
+        </div>
+
+
+    </form>
+}
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

@@ -15,7 +15,6 @@ namespace CooperativeFuneralFundInc.Controllers
     {
         private readonly CFFDataContext _context;
 
-        
         public SupplyRequestsController(CFFDataContext context)
         {
             _context = context;
@@ -25,10 +24,9 @@ namespace CooperativeFuneralFundInc.Controllers
         public async Task<IActionResult> Index()
         {
             var cFFDataContext = _context.SupplyRequests;
-          
+
             return View(await cFFDataContext.ToListAsync());
         }
-
         // GET: Admin/SupplyRequests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -72,6 +70,7 @@ namespace CooperativeFuneralFundInc.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("SupplyRequestId,Status,StatusComments,OrderItems,SupplyRequestOrigin,RequestType,Client,Owner,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
+
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +110,7 @@ namespace CooperativeFuneralFundInc.Controllers
 
 
             IQueryable<ListTaskSupplyR> query = _context.ListTaskSupplyR;
-            var selectedNotes = query.Where(t => t.SupplyRequest.SupplyRequestId==id);
+            var selectedNotes = query.Where(t => t.SupplyRequest.SupplyRequestId == id);
             ViewBag.notesList = selectedNotes.ToList();
 
 
@@ -123,7 +122,7 @@ namespace CooperativeFuneralFundInc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SupplyRequestId,Status,StatusComments,OrderItemsID,RequestOriginId,RequestType,ClientSupplierID,Owner,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
+        public async Task<IActionResult> Edit(int id, [Bind("SupplyRequestId,Status,StatusComments,OrderItems,SupplyRequestOrigin,RequestType,Client,Owner,CreatedBy,CreateTime,UpdatedBy,UpdatedTime")] SupplyRequest supplyRequest)
         {
             if (id != supplyRequest.SupplyRequestId)
             {
@@ -169,7 +168,7 @@ namespace CooperativeFuneralFundInc.Controllers
             }
 
             var supplyRequest = await _context.SupplyRequests
-               
+
                 .FirstOrDefaultAsync(m => m.SupplyRequestId == id);
             if (supplyRequest == null)
             {

@@ -11,23 +11,23 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
 
         public int SupplyRequestId { get; set; }
 
-        //  public int Status { get; set; }
+      //  public int Status { get; set; }
         public string Status { get; set; }
 
         public string StatusComments { get; set; }
 
         [Required(ErrorMessage = "Item selection is required, please verify")]
 
-        // public int OrderItemsID { get; set; }
+       // public int OrderItemsID { get; set; }
         public string OrderItems { get; set; }
 
 
         [Required(ErrorMessage = "Request origin is required, please verify")]
-        //   public int RequestOriginId { get; set; }
+     //   public int RequestOriginId { get; set; }
         public string SupplyRequestOrigin { get; set; }
 
-
-        // public int RequestType { get; set; }
+        
+       // public int RequestType { get; set; }
         public string RequestType { get; set; }
 
 
@@ -35,7 +35,7 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         // public int ClientSupplierID { get; set; }
         public string Client { get; set; }
 
-        // public int Owner { get; set; }
+       // public int Owner { get; set; }
         public string Owner { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreateTime { get; set; }
@@ -44,7 +44,6 @@ namespace CooperativeFuneralFundInc.Models.SupplyRequest
         public DateTime UpdatedTime { get; set; }
 
         public ICollection<ListTaskSupplyR> ListTaskSupplyR { get; set; }
-
 
 
     }

@@ -31,12 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto topnav">
-                    <li class="nav-item @Nav.Active("Home", current)">
-                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
+
                     @using CooperativeFuneralFundInc.Models.UserManagement
 
                     @using Microsoft.AspNetCore.Identity
@@ -50,7 +45,7 @@
                                   asp-area="">
                                 <input type="submit" value="Log Out"
                                        class="btn btn-outline-light" />
-                                <span class="text-light">@User.Identity.Name</span>
+                                <span class="text-light">Username: @User.Identity.Name</span>
                             </form>
                         </li>
                     }
@@ -70,6 +65,13 @@
                                asp-area="" class="nav-link btn btn-outline-secondary text-white" type="button">Log In</a>
                         </li>
                     }
+                    <li class="nav-item @Nav.Active("Home", current)">
+                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-secondary text-white" asp-action="Index" asp-controller="Home" asp-area="Admin">
